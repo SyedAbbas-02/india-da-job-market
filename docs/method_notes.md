@@ -1,0 +1,13 @@
+# Method notes
+
+## Collection rules
+
+- Portal fields fill the structured columns exactly as shown
+- Experience, skills and education are extracted from description text in Phase 3, same rules for all sources
+- Missing values use: Not mentioned / Not disclosed / No tags / Confidential
+
+## Things noticed (add one line each time)
+
+- Jobs 1 and 4 look like reposts of the same posting (same company, cities, description opening; salary and tags differ)
+- Job 2: description text lost a dash in the experience line, so portal header value was used
+- LinkedIn has no skill tags or experience field; Naukri does
