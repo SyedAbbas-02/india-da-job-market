@@ -11,3 +11,7 @@
 - Jobs 1 and 4 look like reposts of the same posting (same company, cities, description opening; salary and tags differ)
 - Job 2: description text lost a dash in the experience line, so portal header value was used
 - LinkedIn has no skill tags or experience field; Naukri does
+- Pilot (n=10: 4 Naukri, 4 LinkedIn, 2 Indeed) took about 1.5 hours; later postings take less
+- Portal header fields differ: Naukri shows salary, experience and skill tags; LinkedIn and Indeed mostly do not (salary shown for 5 of 10 pilot postings, all Naukri except one Indeed)
+- Target revised from 400 to 300 postings (stretch 400) because of collection time
+- Experience, skills and education are extracted from description text for all sources
