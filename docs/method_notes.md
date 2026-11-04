@@ -17,3 +17,4 @@
 - Experience, skills and education are extracted from description text for all sources
 - Job 10 (Indeed): "Data Analyst Trainer" is a teaching role that matches the search term but not the job type; decide in Phase 3 whether to exclude
 - Portal columns renamed with a _portal suffix (experience_portal, skills_portal, salary_portal, work_mode_portal) because extracted values from description text become separate columns in Phase 3
+- Job 12 (ABB): portal education says “Any Graduate / Any Postgraduate” but description asks for a Commerce, Accounting or Finance degree. Portal and description disagree; extract both in Phase 3.
