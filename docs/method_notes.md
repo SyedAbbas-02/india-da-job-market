@@ -57,3 +57,10 @@
 - Boilerplate such as company URLs and fraud warnings appears in some descriptions (ABB, Log9); strip in Phase 3 before skill extraction.
 
 ## Day 2, Naukri, Pune block (jobs 45 to 58)
+
+- Pune onward: all postings collected with Relevance sort, because Date sort returned many off-target postings (60 to 80 skipped per block).
+- Bangalore and Hyderabad blocks (jobs 11 to 44): mix of Date and Relevance sort, not recorded per posting.
+
+### Limitations (for the Phase 6 write-up)
+
+- Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
