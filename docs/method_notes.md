@@ -56,11 +56,26 @@
 - City field: "Bengaluru( Bannerghatta Road )", "Hiring office located in Bengaluru", "Mumbai (All Areas)", repeated cities within one cell.
 - Boilerplate such as company URLs and fraud warnings appears in some descriptions (ABB, Log9); strip in Phase 3 before skill extraction.
 
-## Day 2, Naukri, Pune block (jobs 45 to 58)
+### Day 2, Naukri, Pune block (jobs 45 to 61)
 
-- Pune onward: all postings collected with Relevance sort, because Date sort returned many off-target postings (60 to 80 skipped per block).
-- Bangalore and Hyderabad blocks (jobs 11 to 44): mix of Date and Relevance sort, not recorded per posting.
+- Sort method: Pune onward uses Relevance sort, because Date sort returned many off-target postings (60 to 80 skipped per block). No Freshness filter available. Bangalore and Hyderabad blocks (jobs 11 to 44) were a mix of Date and Relevance sort, not recorded per posting.
+- Pune block done, 17 rows (14 planned plus 3 extra BA postings, jobs 59 to 61, to fix the BA shortfall). Title mix: Data Analyst-titled 6, Fresher DA 2, Business Analyst 5 (jobs 47 and 50 are hybrid titles), MIS 3, Operations 1. Pune is 3 rows over the 14-per-city design.
+- Job 54 (Peroptyx): Maps Evaluator, part-time contract, Marathi language requirement, not data analysis; exclude candidate for Phase 3.
+- Job 59 (LeadWinner): headline "Business Analyst", Role "Full Stack Developer", description is AngularJS and Java development; off-target, exclude candidate for Phase 3.
+- Jobs 47, 48, 49, 51: multi-city fields that include Pune plus Bengaluru, Chennai, Nagpur, Mumbai, Kolkata, Noida or Delhi/NCR. Expect the same postings in other city blocks; skip exact URL ID duplicates and count them.
+- Job 56: title and description say Ahmedabad, city field says Pune; company shown as "Leading and Reputed Fastest growing comp…" (URL says precise-talent-hunt). Role is Back Office Executive. Same pattern as job 43.
+- Job 52: portal experience 0 - 3 years, but description says "over 2 years" and "2+ years". Description also has line breaks inside "e.g." and company boilerplate (About Aumni).
+- Job 61: portal experience 0 - 5 years, description says 2 to 4 years and "24 years" (typo); includes non-job text (gender, bond, QR scan); Industry Type "Management Consulting" for a banking-software role.
+- Job 60 (Barclays): portal experience 0 - 13 years (AVP-level posting); long boilerplate (values, AVP expectations) to strip in Phase 3.
+- Job 51: portal salary 2.5-4 Lacs P.A., description says 20k to 40k per month. Salary conflict.
+- Salary format: jobs 48, 57, 58 start with "50,000-" (rupees) and end in "Lacs P.A." (lakhs). Parsing rule needed in Phase 3 (50,000 = 0.5 LPA).
+- Job 49: description has a stuffed "Key Skills" block (Data Entry, Back Office, SQL, Python, Tableau) that conflicts with the requirements section ("Basic knowledge of SQL is an added advantage"). Skill extraction from the full text will overcount; decide a rule in Phase 3.
+- Job 50: one posting describes two roles (Business Analyst and Data Analyst), experience "0 years".
+- Job 48: title "Data Analytics Analyst", Role "Data Engineer", Role Category Data Science & Machine Learning; description is analyst work. URL source is "similar jobs", not the search list.
+- Disclaimer boilerplate appears in jobs 45, 53, 55, 59 and 61; strip in Phase 3.
+- posted_ago "3+ weeks ago" is an open-ended bucket (job 60 URL ID points to 30 Mar 2026). Jobs 49 and 58 show newer labels than their URL ID dates (likely refreshed postings). Derive posting date from the URL ID in Phase 3.
 
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
+- Pune has 17 rows against 14 for other Naukri cities.
