@@ -75,6 +75,10 @@
 - Disclaimer boilerplate appears in jobs 45, 53, 55, 59 and 61; strip in Phase 3.
 - posted_ago "3+ weeks ago" is an open-ended bucket (job 60 URL ID points to 30 Mar 2026). Jobs 49 and 58 show newer labels than their URL ID dates (likely refreshed postings). Derive posting date from the URL ID in Phase 3.
 
+### Day 2, Naukri, Chennai block (jobs 62 to 75)
+
+- Duplicates skipped (same URL job ID): 0 so far
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
