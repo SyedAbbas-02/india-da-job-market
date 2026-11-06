@@ -94,6 +94,11 @@
 
 ### Day 3, Naukri, Mumbai block (jobs 77 to 90)
 
+- Duplicate check on jobs 1 to 90: 0 pairs found.
+- Job 77 (Zema Global): portal work mode Hybrid, description says "Work Mode: Remote"; description says up to 1 year of experience, portal 0 - 2 years. Rotational shifts (AU, UK, US).
+- Job 78 (Happy Square): headline "Data Analyst", description title "Executive - QA - Data" at a food company; data entry into QA trackers and basic Excel; portal industry Financial Services; URL says white-force-outsourcing-services. Off-target, exclude candidate.
+- Job 79 (MitKat): description lists Mumbai, Gurgaon, Hyderabad and Bangalore; [looks like / is the same posting as] jobs 30 and 33 with a different URL ID; collapse in Phase 3. Description says "experienced" against portal 0 - 1 years.
+- Job 80 (Incanus): very long description with many "preferred" skills (Macros, VBA, Power BI, SQL as an added advantage); skill extraction will overcount; multi-city field (Bengaluru, Gurugram, Mumbai).
 - Job 84 (Creative Hands HR): placeholder posting, "requirements are not yet active from Client's side", no real duties. Same pattern as job 41; exclude candidate for Phase 3.
 - Job 90 (Neoteric): market research role; Role field "Research Associate / Engineer", category Pharma & Biotech; off-target and off-plan title, exclude candidate. Description repeats a sentence.
 - Job 87 (Navadhan): generalist role across product, strategy and HR coordination, Role field "Strategic & Top Management - Other"; borderline. Company shown as "Navadhan Capitali" (URL says navadhan-capital).
@@ -104,7 +109,7 @@
 - Job 88: portal experience 0 - 1 years, description says "2 to 6month" and asks for a B-Tech from a premier institute.
 - Job 82: description repeats the equal-opportunity paragraph twice; says "0-2 years... experienced candidates preferred".
 - Job 81: posted_ago "Just Now" (new bucket), applicants "10" (a real number, not the 100+ cap). Description mixes data analytics with operations research and budget management.
-- Mumbai block: [10 or 14] rows. Title mix: Data Analyst 2, Fresher/Junior DA 2, Business Analyst 2, MIS 2, Operations 1, off-plan 1. Searches ran short on Data Analyst, Operations and BA postings; no padding with off-target rows.
+- Mumbai block done, 14 rows (jobs 77 to 90). Title mix: Data Analyst 5, Fresher/Junior DA 2, Business Analyst 2, MIS 3, Operations 1, off-plan 1. Searches ran short on Fresher, BA and Operations postings; no padding with off-target rows.
 
 ### Limitations (for the Phase 6 write-up)
 
