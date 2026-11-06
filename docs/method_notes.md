@@ -11,7 +11,6 @@
 - Collection plan: one portal per block with targets (Naukri 100, LinkedIn 80, Indeed 60, Foundit 60), instead of a daily mix. Exact duplicates (same URL job ID) are skipped and counted; reposts (same company and title, different URL job ID) are collected.
 - Naukri plan: 14 postings each in Hyderabad, Pune, Chennai, Mumbai and Delhi/NCR, plus 6 in Bangalore (second pass), with a fixed title mix per city (Data Analyst, Junior/Fresher Data Analyst, Business Analyst, MIS Executive, Operations Analyst). Job_id ranges shifted after Pune: Mumbai 77 to 90, Delhi/NCR 91 to 104, Bangalore 105 to 110. Shortfalls are filled only with on-target postings; a smaller block is accepted rather than padding with off-target ones.
 - Duplicate check before each block's rows are final: copy the sheet, compare the URL job ID, delete the later row of any pair and leave the gap. Naukri: URL text before the "?". LinkedIn: currentJobId value. Indeed: jk value.
-- For every Naukri title search, write down the total result count shown at the top of the page, under that city's heading (needed for Question 2, since equal quotas per city cannot show which city has the most openings).
 
 ## Things noticed (add one line each time)
 
@@ -95,8 +94,7 @@
 
 ### Day 3, Naukri, Mumbai block (jobs 77 to 90)
 
-- Result counts shown by Naukri (Mumbai filter, Relevance sort): Data Analyst [n], Fresher Data Analyst [n], Business Analyst [n], MIS Executive [n], Operations Analyst [n]
-- Duplicates skipped (same URL job ID): 0 so far
+-  
 
 ### Limitations (for the Phase 6 write-up)
 
