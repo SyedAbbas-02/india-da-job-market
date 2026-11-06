@@ -113,7 +113,20 @@
 
 ### Day 3, Naukri, Delhi/NCR block (jobs 91 to 104)
 
--
+- Delhi/NCR block done, 14 rows. Title mix: Data Analyst 5, Fresher/Junior DA 1, Business Analyst 4, MIS 3, Operations 0, off-plan 1. Operations Analyst postings are very thin across the Naukri blocks so far (jobs 58, 71, 87), which weakens Question 5.
+- Duplicate check on jobs 1 to 104: 0 pairs found.
+- Job 91 (Giit): headline "Data Analyst", Role "Data Engineer", ETL/Spark/Kafka work; off-target, exclude candidate. Description requires a 2-year agreement and graduation in 2023 or earlier, against portal experience 0 - 1 years.
+- Job 104 (American Express): Model Risk Management, GenAI/LLM model validation; off-target, exclude candidate. Description asks for an MBA or Master's from a top-tier institute, portal says Any Graduate.
+- Job 93 (Nxtwave): 2.5-year service agreement with payback clause; graduation-year and B.Tech/MCA gate in the description, portal education says Any Graduate. Borderline. Phase 3 idea: extract a bond/service-agreement flag.
+- Job 99 (MBS Global): portal salary 20-35 Lacs P.A. with experience 0 - 6 years (outlier); IT business analyst work; URL says modern-ballistic; BI/Tableau tags not in description.
+- Job 92 (Legistify): portal experience 0 - 2 years but URL says 0-to-1-years; check against the posting. Data-administration work; URL ID points to Nov 2024.
+- Job 97: posted_ago "Today" but URL ID points to 22 May 2026 (refreshed posting). Education field is a very long list of engineering branches.
+- Jobs 101 and 102: identical skills_portal lists generated from the Naukri MIS template; tags are uninformative.
+- Job 100: headline "Business Analyst", description asks for a Data Analyst at Broadway; "12 years" is a lost dash (1-2).
+- Job 94: description cut off mid-word ("turnaroun") with a stray "Role & responsibilities" heading. Company shown as "Client of Markmakers" (URL says mark-makers-consultancy-services).
+- Job 96: company shown as "Manufacturing Firm (Undisclosed)" (URL says good-hr-services); headline contains pipe characters.
+- Company names differ from URL names on jobs 99 (modern-ballistic) and 103 (Spar vs sapere-krognos).
+- Relevance sort again returns old postings: jobs 92, 101 and 102 have URL IDs from 2024 to 2025.
 
 ### Limitations (for the Phase 6 write-up)
 
