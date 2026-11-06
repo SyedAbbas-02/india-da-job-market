@@ -111,6 +111,10 @@
 - Job 81: posted_ago "Just Now" (new bucket), applicants "10" (a real number, not the 100+ cap). Description mixes data analytics with operations research and budget management.
 - Mumbai block done, 14 rows (jobs 77 to 90). Title mix: Data Analyst 5, Fresher/Junior DA 2, Business Analyst 2, MIS 3, Operations 1, off-plan 1. Searches ran short on Fresher, BA and Operations postings; no padding with off-target rows.
 
+### Day 3, Naukri, Delhi/NCR block (jobs 91 to 104)
+
+-
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
