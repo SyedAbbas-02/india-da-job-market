@@ -97,7 +97,7 @@
 - Duplicate check on jobs 1 to 90: 0 pairs found.
 - Job 77 (Zema Global): portal work mode Hybrid, description says "Work Mode: Remote"; description says up to 1 year of experience, portal 0 - 2 years. Rotational shifts (AU, UK, US).
 - Job 78 (Happy Square): headline "Data Analyst", description title "Executive - QA - Data" at a food company; data entry into QA trackers and basic Excel; portal industry Financial Services; URL says white-force-outsourcing-services. Off-target, exclude candidate.
-- Job 79 (MitKat): description lists Mumbai, Gurgaon, Hyderabad and Bangalore; [looks like / is the same posting as] jobs 30 and 33 with a different URL ID; collapse in Phase 3. Description says "experienced" against portal 0 - 1 years.
+- Job 79 (MitKat): description lists Mumbai, Gurgaon, Hyderabad and Bangalore; compared with jobs 30 and 33 and it is not a repost (location and description differ). Description says "experienced" against portal 0 - 1 years.
 - Job 80 (Incanus): very long description with many "preferred" skills (Macros, VBA, Power BI, SQL as an added advantage); skill extraction will overcount; multi-city field (Bengaluru, Gurugram, Mumbai).
 - Job 84 (Creative Hands HR): placeholder posting, "requirements are not yet active from Client's side", no real duties. Same pattern as job 41; exclude candidate for Phase 3.
 - Job 90 (Neoteric): market research role; Role field "Research Associate / Engineer", category Pharma & Biotech; off-target and off-plan title, exclude candidate. Description repeats a sentence.
@@ -128,6 +128,10 @@
 - Company names differ from URL names on jobs 99 (modern-ballistic) and 103 (Spar vs sapere-krognos).
 - Relevance sort again returns old postings: jobs 92, 101 and 102 have URL IDs from 2024 to 2025.
 
+### Day 3, Naukri, Bangalore second pass (jobs 105 to 110)
+
+-
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
@@ -135,3 +139,4 @@
 - Relevance sort returns many old postings (some from 2023 to 2025 by URL ID date), so "current openings" may be overstated; filter on URL date in Phase 3.
 - Chennai has few Data Analyst, MIS and Operations postings on Naukri, so its block is mostly Business Analyst.
 - Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 is answered only as share of fresher roles and title mix per city, not city size. Revisit the wording of Question 2 in Phase 3.
+- Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
