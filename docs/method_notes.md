@@ -94,7 +94,17 @@
 
 ### Day 3, Naukri, Mumbai block (jobs 77 to 90)
 
--  
+- Job 84 (Creative Hands HR): placeholder posting, "requirements are not yet active from Client's side", no real duties. Same pattern as job 41; exclude candidate for Phase 3.
+- Job 90 (Neoteric): market research role; Role field "Research Associate / Engineer", category Pharma & Biotech; off-target and off-plan title, exclude candidate. Description repeats a sentence.
+- Job 87 (Navadhan): generalist role across product, strategy and HR coordination, Role field "Strategic & Top Management - Other"; borderline. Company shown as "Navadhan Capitali" (URL says navadhan-capital).
+- Job 89 (Muthoot): Role field Finance & Accounting; portal salary 7.5-9.5 Lacs P.A. for a 0-year role (check as outlier in Phase 3); portal education "Graduation Not Required" but description asks for a Finance or Economics degree.
+- Job 86 (Securens Systems): repost of job 64 (Chennai) with a different URL ID; description differs slightly.
+- Job 83: company shown as "AM NS India" but the URL says essar-minmet. Salary cell had "Not Disclosed" and was corrected to "Not disclosed".
+- Job 85: title MIS Executive but Role field is Business Analyst; URL ID date points to Dec 2024.
+- Job 88: portal experience 0 - 1 years, description says "2 to 6month" and asks for a B-Tech from a premier institute.
+- Job 82: description repeats the equal-opportunity paragraph twice; says "0-2 years... experienced candidates preferred".
+- Job 81: posted_ago "Just Now" (new bucket), applicants "10" (a real number, not the 100+ cap). Description mixes data analytics with operations research and budget management.
+- Mumbai block: [10 or 14] rows. Title mix: Data Analyst 2, Fresher/Junior DA 2, Business Analyst 2, MIS 2, Operations 1, off-plan 1. Searches ran short on Data Analyst, Operations and BA postings; no padding with off-target rows.
 
 ### Limitations (for the Phase 6 write-up)
 
