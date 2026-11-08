@@ -1,15 +1,28 @@
 # Method notes
 
+## Status
+
+- Naukri closed at 99 rows (including 4 pilot rows), target 100.
+- LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
+- Next: Indeed (target 60, numbering continues from job 185), then Foundit (target 60).
+- Update this section each time a portal closes.
+
 ## Collection rules
 
-- Portal fields fill the structured columns exactly as shown
+- Portal fields fill the structured columns exactly as shown; copy portal wording exactly
 - Experience, skills and education are extracted from description text in Phase 3, same rules for all sources
-- Missing values use: Not mentioned / Not disclosed / No tags / Confidential
-- Phone numbers and emails in descriptions are replaced with [removed]
+- Missing values use: Not mentioned / Not disclosed / No tags / Confidential. Never blank, never NA or 0
+- Phone numbers and emails in descriptions are replaced with [removed]; the rest of the text is unchanged
+- No scraping. All postings are collected by hand
+- No date, salary or experience filters. A city filter is allowed (deviations are listed under Limitations)
+- Log titles as the posting shows them; job_title holds the headline
 - For the Data Analyst search, include a posting if its main work is analyzing or reporting on data (SQL, Excel, Power BI, Tableau, Python, dashboards, reporting). For Business Analyst, MIS, Operations and other title searches, skip only a different job family (accounting or bookkeeping, teaching or training, sales or support, pure compliance or audit, ML/AI model building); do not skip for lacking data tools, so Question 5 is not biased.
 - Check the Role field and the main work before collecting; a generic title such as "Analyst" can hide a non-analysis role.
-- Collection plan: one portal per block with targets (Naukri 100, LinkedIn 80, Indeed 60, Foundit 60), instead of a daily mix. Exact duplicates (same URL job ID) are skipped and counted; reposts (same company and title, different URL job ID) are collected.
-- Naukri plan: 14 postings each in Hyderabad, Pune, Chennai, Mumbai and Delhi/NCR, plus 6 in Bangalore (second pass), with a fixed title mix per city (Data Analyst, Junior/Fresher Data Analyst, Business Analyst, MIS Executive, Operations Analyst). Job_id ranges shifted after Pune: Mumbai 77 to 90, Delhi/NCR 91 to 104, Bangalore 105 to 110. Shortfalls are filled only with on-target postings; a smaller block is accepted rather than padding with off-target ones.
+- Off-target rows that get collected are kept and logged as exclude candidates, not deleted. The exclude decision is made in Phase 3.
+- Reposts (same posting, different URL job ID) and cross-portal duplicates are kept and collapsed in Phase 3.
+- Internship stipends stay out of the salary analysis.
+- Collection plan: one portal per block with targets (Naukri 100, LinkedIn 80, Indeed 60, Foundit 60), instead of a daily mix. Exact duplicates (same URL job ID within one portal) are removed at the end-of-block check and counted. Shortfalls are accepted; never pad with off-target postings.
+- Naukri plan: 14 postings each in Hyderabad, Pune, Chennai, Mumbai and Delhi/NCR, plus 6 in Bangalore (second pass; 4 collected), with a fixed title mix per city (Data Analyst, Junior/Fresher Data Analyst, Business Analyst, MIS Executive, Operations Analyst). Job_id ranges shifted after Pune: Mumbai 77 to 90, Delhi/NCR 91 to 104, Bangalore second pass 105 to 108. Shortfalls are filled only with on-target postings; a smaller block is accepted rather than padding with off-target ones.
 - Duplicate check before each block's rows are final: copy the sheet, compare the URL job ID, delete the later row of any pair and leave the gap. Naukri: URL text before the "?". LinkedIn: currentJobId value. Indeed: jk value.
 
 ## Things noticed (add one line each time)
@@ -64,7 +77,7 @@
 - Pune block done, 15 rows after duplicate removal (jobs 45 to 61, minus 47 and 50). Title mix: Data Analyst-titled 6, Fresher DA 2, Business Analyst 3 (jobs 59 to 61), MIS 3, Operations 1. Pune is 1 row over the 14-per-city design.
 - Job 54 (Peroptyx): Maps Evaluator, part-time contract, Marathi language requirement, not data analysis; exclude candidate for Phase 3.
 - Job 59 (LeadWinner): headline "Business Analyst", Role "Full Stack Developer", description is AngularJS and Java development; off-target, exclude candidate for Phase 3.
-- Jobs 48, 49, 51: multi-city fields that include Pune plus Nagpur, Mumbai, Kolkata, Chennai, Noida or Delhi/NCR. Expect the same postings in other city blocks; skip exact URL ID duplicates and count them.
+- Jobs 48, 49, 51: multi-city fields that include Pune plus Nagpur, Mumbai, Kolkata, Chennai, Noida or Delhi/NCR. Expect the same postings in other city blocks; exact URL ID duplicates are removed at the end-of-block check and counted.
 - Job 56: title and description say Ahmedabad, city field says Pune; company shown as "Leading and Reputed Fastest growing comp…" (URL says precise-talent-hunt). Role is Back Office Executive. Same pattern as job 43.
 - Job 52: portal experience 0 - 3 years, but description says "over 2 years" and "2+ years". Description also has line breaks inside "e.g." and company boilerplate (About Aumni).
 - Job 61: portal experience 0 - 5 years, description says 2 to 4 years and "24 years" (typo); includes non-job text (gender, bond, QR scan); Industry Type "Management Consulting" for a banking-software role.
@@ -89,7 +102,7 @@
 - Job 67: portal salary Not disclosed, description says 1.5LPA - 3LPA; portal 0 - 2 years, description says 0-3; description also lists an age range.
 - Job 69: skills_portal (legal documentation, litigation matters, training) does not match the description.
 - Template descriptions with almost no skill content (jobs 62, 69, 70, 75, and job 55 in Pune): skill extraction will be sparse for these.
-- Jobs 74 and 75 list 7 cities each (Bengaluru, Kolkata, Mumbai, New Delhi, Hyderabad, Pune, Chennai); expect them again in other blocks and skip exact URL ID duplicates. Job 74 description is a pasted JSON-like block with duplicated items.
+- Jobs 74 and 75 list 7 cities each (Bengaluru, Kolkata, Mumbai, New Delhi, Hyderabad, Pune, Chennai); expect them again in other blocks; exact URL ID duplicates are removed at the end-of-block check. Job 74 description is a pasted JSON-like block with duplicated items.
 - Relevance sort surfaces old postings: by URL ID date, only 3 of 14 postings in this block are from the last two months; jobs 76, 74, 75 and 70 look like 2023 to 2025.
 
 ### Day 3, Naukri, Mumbai block (jobs 77 to 90)
@@ -128,18 +141,18 @@
 - Company names differ from URL names on jobs 99 (modern-ballistic) and 103 (Spar vs sapere-krognos).
 - Relevance sort again returns old postings: jobs 92, 101 and 102 have URL IDs from 2024 to 2025.
 
-### Day 3, Naukri, Bangalore second pass (jobs 105 to 110)
+### Day 3, Naukri, Bangalore second pass (jobs 105 to 108)
 
 - Job 105 (Hexira Digital): words in the description are run together where line breaks were lost ("businessrequirements", "dataanalysis"); skill extraction in Phase 3 needs to handle this.
 - Job 106 (Integrated Wireless Solutions): headline MIS Executive, Role field "Leadership Recruiter", department Human Resources; description is MIS and billing work.
 - Job 107 (Paakashala): skills_portal (CAPA, GMP, OOS, QMS, TrackWise) does not match the description (business and sales reports).
 - Job 108 (Olive Crypto): headline "Operations Analyst", city field Hyderabad, work is UPI payment reconciliation; Role field "Management - Other"; accounting-style work, exclude candidate.
 - Naukri Operations Analyst postings are rare across all cities (jobs 58, 71, 87, 108; only job 58 is clean). Operations comparison for Question 5 to be filled from LinkedIn and Indeed.
-- Bangalore second pass done, 4 rows (jobs 105 to 108); searches for Operations Analyst, Business Analyst and MIS in Bangalore returned no further on-target postings. Title mix: Business Analyst 1, MIS 2, Operations 1.
+- Bangalore second pass done, 4 rows (jobs 105 to 108; planned 6); searches for Operations Analyst, Business Analyst and MIS in Bangalore returned no further on-target postings. Title mix: Business Analyst 1, MIS 2, Operations 1.
 - Duplicate check on jobs 1 to 108: 0 pairs found.
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 
-### LinkedIn, Bengaluru block (jobs 109 to 122)
+### LinkedIn, Bengaluru block (jobs 109 to 119)
 
 - LinkedIn Bengaluru block: Date posted filter was not applied (jobs 111 and 118 are 6 and 3 months old); Experience level filter not used except for the entry-level retry.
 - LinkedIn postings in this block skew senior: jobs 109, 110, 112 ask for 3+ years; only job 113 (Schneider, "Business Analyst I", no years stated) is clearly entry-level. LinkedIn has no experience field; extract from description in Phase 3.
@@ -172,7 +185,7 @@
 
 - Pune block done, 15 rows (jobs 132 to 146). Jobs 141 (Navi Mumbai), 144 (Mumbai) and 146 (Navi Mumbai) have Mumbai city fields, so Pune proper is 12 rows. Title mix by actual title: Data Analyst 5, Business Analyst 3, Associate 2 (136, 146), Intern 3 (142, 143, 144), Operations 1 (145), MIS 1 (137). No Operations Analyst titles found in Pune; "Business Operations Intern" and "Operations Support Analyst" used instead.
 - Seniority: all three BA postings are senior (138: 5 to 10 years; 139: AVP; 140: 6+ years). Entry-level roles are the interns, job 136 (0 to 2 years) and job 145 ("Ops Sup Analyst 1").
-- Job 141 (Zema Global): same posting as Naukri job 77 (same company, title and description); cross-portal duplicate, collapse in Phase 3 by company, title and city. Its URL carries a salary filter parameter (f_SAL), so a salary filter was active for that search.
+- Job 141 (Zema Global): same posting as Naukri job 77 (same company, title and description); cross-portal duplicate, collapse in Phase 3 by company, title and city. Its URL carries a salary filter parameter (f_SAL), so a salary filter was active for that search (breaks the no-filter rule; see Limitations).
 - Job 140 (SailPoint): email address in description replaced with [removed]; "Sr. Business Analyst", 6+ years; words glued where line breaks were lost; applicants "79 people clicked apply" (below the 100 cap).
 - Job 133 (Wynisco): reposted 3 months ago; description starts with scraped company metadata (Website, Business Type, Funding Stage), same as job 111.
 - Job 137 (Mercedes-Benz dealership): MIS role that includes lead and DMS data entry; description ends with empty template headings.
@@ -218,15 +231,26 @@
 - Job 177 (EXL): description is two paragraphs with no requirements; experience not stated.
 - LinkedIn appends a "Skills:" line to some descriptions (jobs 130, 156, 174, 175); keep as part of the description; it is not in skills_portal.
 - LinkedIn closed at 80 rows (including 4 pilot rows).
+- TODO: run the currentJobId duplicate check on all LinkedIn rows (jobs 5 to 8 pilot plus 109 to 184) and log the result here. Only the Bengaluru check (15 rows, 0 pairs) is logged so far.
+
+### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
+
+- Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
+- Reposts within LinkedIn: jobs 118 and 159 (Portcast), 145 and 155 (Citi)
+- Cross-portal: Naukri job 77 and LinkedIn job 141 (Zema Global); Naukri job 82 and LinkedIn job 170 (Havas Media / PivotRoots)
+- Job 79 (MitKat) was checked against 30 and 33 and is not a repost.
+- Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
 
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
-- Pune has 15 rows against 14 for other Naukri cities.
+- City quotas are unequal: Naukri Bangalore has 24 rows (20 plus 4 second pass) against 14 in most other cities, and Pune has 15. LinkedIn blocks range from 11 to 15 rows.
 - Relevance sort returns many old postings (some from 2023 to 2025 by URL ID date), so "current openings" may be overstated; filter on URL date in Phase 3.
 - Chennai has few Data Analyst, MIS and Operations postings on Naukri, so its block is mostly Business Analyst.
-- Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 is answered only as share of fresher roles and title mix per city, not city size. Revisit the wording of Question 2 in Phase 3.
+- Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 was reworded in questions.md to share of fresher or entry-level roles and title mix per city, not city size.
 - Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
-- LinkedIn Date posted filter was not used (too few postings with it). About 6 of 23 LinkedIn rows in Bengaluru and Hyderabad are 2 months old or older, so "current openings" may be overstated; filter on posted_ago in Phase 3.
-- Cross-portal duplicates exist (job 141 on LinkedIn is the same posting as Naukri job 77); URL-ID checks only catch duplicates within a portal, so dedupe across portals by company, title and city in Phase 3.
+- LinkedIn Date posted filter was not used (too few postings with it). Many LinkedIn rows are 2 months old or older (for example jobs 111, 118, 133, 147, 168, 181, 182), so "current openings" may be overstated; count them with posted_ago in Phase 3.
+- Filter deviations on LinkedIn: the Experience level filter was used for the entry-level retry in the Bengaluru block, and a salary filter was active in the search that returned job 141 (f_SAL in the URL). Both break the no-filter rule and may bias those rows.
+- Cross-portal duplicates exist (Naukri job 77 and LinkedIn job 141; Naukri job 82 and LinkedIn job 170); URL-ID checks only catch duplicates within a portal, so dedupe across portals by company, title and city in Phase 3.
 - LinkedIn rows skew toward large multinationals and financial-services captive centers (Mastercard, JPMorgan, BlackRock, Citi, Deutsche Bank, Experian and others), unlike Naukri, which has more small and mid-size firms. Entry-level postings on LinkedIn are rare and often carry "Associate" titles that ask for 3 to 5+ years.
+- Operations Analyst and MIS postings are thin on both portals, which weakens Question 5.
