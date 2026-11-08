@@ -130,7 +130,14 @@
 
 ### Day 3, Naukri, Bangalore second pass (jobs 105 to 110)
 
--
+- Job 105 (Hexira Digital): words in the description are run together where line breaks were lost ("businessrequirements", "dataanalysis"); skill extraction in Phase 3 needs to handle this.
+- Job 106 (Integrated Wireless Solutions): headline MIS Executive, Role field "Leadership Recruiter", department Human Resources; description is MIS and billing work.
+- Job 107 (Paakashala): skills_portal (CAPA, GMP, OOS, QMS, TrackWise) does not match the description (business and sales reports).
+- Job 108 (Olive Crypto): headline "Operations Analyst", city field Hyderabad, work is UPI payment reconciliation; Role field "Management - Other"; accounting-style work, exclude candidate.
+- Naukri Operations Analyst postings are rare across all cities (jobs 58, 71, 87, 108; only job 58 is clean). Operations comparison for Question 5 to be filled from LinkedIn and Indeed.
+- Bangalore second pass done, 4 rows (jobs 105 to 108); searches for Operations Analyst, Business Analyst and MIS in Bangalore returned no further on-target postings. Title mix: Business Analyst 1, MIS 2, Operations 1.
+- Duplicate check on jobs 1 to 108: 0 pairs found.
+- Naukri closed at 99 rows (including 4 pilot rows), target 100.
 
 ### Limitations (for the Phase 6 write-up)
 
