@@ -139,6 +139,10 @@
 - Duplicate check on jobs 1 to 108: 0 pairs found.
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 
+### LinkedIn, Bengaluru block (jobs 109 to 122)
+
+-
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
