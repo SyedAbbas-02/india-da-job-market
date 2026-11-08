@@ -207,6 +207,18 @@
 - Job 169 (TaskUs): description says "Posted At: Wed Sep 23 2026" while LinkedIn says "Reposted 1 day ago"; refreshed posting.
 - LinkedIn city formats vary: "Mumbai Metropolitan Region", "Navi Mumbai", "Pune Division", "Pune City", "Pune District", "Pune/Pimpri-Chinchwad Area", "Greater Hyderabad Area", "Serilingampalli, Telangana"; standardize in Phase 3.
 
+### LinkedIn, Delhi/NCR block (jobs 172 to 184)
+
+- Delhi/NCR block done, 13 rows (jobs 172 to 184): 10 Gurugram, 3 Delhi (182, 183, 184), none from Noida. Title mix by actual title: Data Analyst 3 (177, 178, 183), entry-level 4 (173 Associate Analyst, 174 Jr Data Analyst, 176 Associate Data Analyst, 184 Business Analyst Intern), Business Analyst 3, Operations 1 (181), MIS 1 (182), other 1 (172 Lead Analyst).
+- Seniority: this block has the most junior roles so far: jobs 173 (freshers and up to 2 years), 174 (1 to 2 years), 183 (0 to 3 years, new graduates welcome) and 184 (intern). Job 176 "Associate" asks 2 to 5 years with VBA and Python mandatory; job 178 asks 5+ years.
+- Job 181 (Quantiq): "Market Operations Analyst", live trading monitoring on EST sessions; trading operations rather than data analysis; borderline; posted 3 months ago.
+- Job 172 (American Express): "Lead Analyst", MIS reporting and workload tracking for partner risk monitoring; the EEO paragraph appears twice; borderline.
+- Job 184 (Skillzen Loop): portal work mode On-site and city Delhi, description says "Workplace Type: Remote"; stipend INR 10,000 to 12,000 per month for a 1 to 3 month internship.
+- Job 182 (Natural Life Style): very long MIS role mixing hospital, donor, camp and social media data; posted 2 months ago.
+- Job 177 (EXL): description is two paragraphs with no requirements; experience not stated.
+- LinkedIn appends a "Skills:" line to some descriptions (jobs 130, 156, 174, 175); keep as part of the description; it is not in skills_portal.
+- LinkedIn closed at 80 rows (including 4 pilot rows).
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
