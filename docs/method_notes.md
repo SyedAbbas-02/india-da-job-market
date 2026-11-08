@@ -181,6 +181,19 @@
 - Job 136 (Blue Matter): description ends with a website, "Powered by JazzHR" and a stray code; strip in Phase 3.
 - Job 139 (Deutsche Bank): AVP-level "Business Functional Analyst".
 
+### LinkedIn, Chennai block (jobs 147 to 159)
+
+- Chennai block done, 13 rows (jobs 147 to 159). Title mix by actual title: Data Analyst 4, entry-level 3 (151 "Jr Data Analyst", 158 "Associate Data Analyst", 159 Intern), Business Analyst 3, Operations 1 (155), MIS 2 (156, 157).
+- Job 159 (Portcast) is a repost of job 118 (Bengaluru) and job 155 (Citi) is a repost of job 145 (Pune): same company, title and description, different URL IDs and cities; collapse in Phase 3.
+- Job 149 (Emarlex): headline "Data Analyst", description is Snowflake/SSIS/Informatica data engineering and ends with "ETL Developer"; scraped web text at the top; salary in the description (12 to 15 LPA) while the portal field is Not disclosed. Off-target, exclude candidate.
+- Job 156: "MIS Analyst (FP&A)" requiring a Chartered Accountant; finance role, exclude candidate; company shown as "People, Jobs, and News" (aggregator). Description ends with an appended "Skills:" line.
+- Job 158 (Teamware): "Data Steward/Associate Data Analyst", CRM/MDM data maintenance and cleansing; borderline; "Requirements added by the job poster" block (2+ years) is LinkedIn screening text, strip before extraction. Job 148 has the same kind of block.
+- Job 147: company shown as Wayfair but the description says OJ Commerce; reposted 7 months ago; description starts with scraped company metadata (Business Type, Funding Stage, Salary Range).
+- Seniority: only job 159 (intern) is clearly a fresher role. Job 151 "Jr Data Analyst" asks 2 to 4 years; job 150 describes a junior role but asks 5+ years; job 158 "Associate" asks 2+ years; job 153 "BA" asks 10 to 12 years; job 154 asks 5+ years.
+- Job 154 (OneMagnify): description still contains a placeholder where the benefits section should be ("[Insert standard OneMagnify Benefits section...]").
+- Salary formats on LinkedIn include "K INR/yr", "M INR/yr" (job 147: 500K - 1.7M, job 156: 1M - 1.5M) and "K INR/month" (stipends, jobs 119 and 143); one parsing rule needed in Phase 3.
+- Words glued where line breaks were lost on jobs 148, 153 and 157.
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
