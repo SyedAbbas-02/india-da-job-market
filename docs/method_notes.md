@@ -231,7 +231,7 @@
 - Job 177 (EXL): description is two paragraphs with no requirements; experience not stated.
 - LinkedIn appends a "Skills:" line to some descriptions (jobs 130, 156, 174, 175); keep as part of the description; it is not in skills_portal.
 - LinkedIn closed at 80 rows (including 4 pilot rows).
-- TODO: run the currentJobId duplicate check on all LinkedIn rows (jobs 5 to 8 pilot plus 109 to 184) and log the result here. Only the Bengaluru check (15 rows, 0 pairs) is logged so far.
+- Duplicate check on all Naukri rows and all LinkedIn rows, run separately per portal (Naukri: URL text before the "?"; LinkedIn: currentJobId): 0 duplicate pairs. Cross-portal duplicates are not covered by this check and are handled in Phase 3 (see the list above).
 
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
