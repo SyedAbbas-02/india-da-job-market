@@ -184,3 +184,4 @@
 - Chennai has few Data Analyst, MIS and Operations postings on Naukri, so its block is mostly Business Analyst.
 - Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 is answered only as share of fresher roles and title mix per city, not city size. Revisit the wording of Question 2 in Phase 3.
 - Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
+- LinkedIn Date posted filter was not used (too few postings with it). About 6 of 23 LinkedIn rows in Bengaluru and Hyderabad are 2 months old or older, so "current openings" may be overstated; filter on posted_ago in Phase 3.
