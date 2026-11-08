@@ -141,15 +141,20 @@
 
 ### LinkedIn, Bengaluru block (jobs 109 to 122)
 
-- LinkedIn Bengaluru block so far: 8 rows (jobs 109 to 116). Title mix: Data Analyst 3, Business Analyst 3, Operations 1, MIS 1, Fresher/Junior DA 0. Operations and MIS searches returned few postings, mostly off-target. Date posted filter was not applied for this block (job 111 is 6 months old); applied from the next block.
+- LinkedIn Bengaluru block: Date posted filter was not applied (jobs 111 and 118 are 6 and 3 months old); Experience level filter not used except for the entry-level retry.
 - LinkedIn postings in this block skew senior: jobs 109, 110, 112 ask for 3+ years; only job 113 (Schneider, "Business Analyst I", no years stated) is clearly entry-level. LinkedIn has no experience field; extract from description in Phase 3.
+- LinkedIn Bengaluru block done, 11 rows (jobs 109 to 119). Title mix: Data Analyst 3, Business Analyst 3, Operations 1, MIS 1, entry-level 3 (jobs 117 to 119). No posting titled Junior or Fresher Data Analyst was found; entry-level roles appeared as Associate Consultant and Intern titles. Operations and MIS searches returned few postings, mostly off-target.
 - Salary format on LinkedIn: "400K INR/yr - 800K INR/yr" (job 111). Parsing rule needed in Phase 3 (400K = 4 LPA). Job 111 description starts with scraped company metadata (Website, Business Type, Funding Stage, Salary Range); strip in Phase 3.
 - Job 110 (Sutherland): description says "Experience: 5 -10 years" and lists Hyderabad, Mumbai, Chennai and Bangalore; it ends with a "Requirements added by the job poster" block (4+ years MySQL, PostgreSQL, Databases), which is LinkedIn screening text, not the description; strip before extraction.
 - Jobs 110 and 112: words glued where line breaks were lost ("Job DescriptionAs a", "Key Skills RequiredExperience"). Same as job 105 on Naukri; skill extraction must handle it.
 - Job 116 (Hector Beverages): description ends with empty template headings (Designation, Function, Sub-function and so on); strip in Phase 3.
+- Job 117 (Huron): headline "Associate Consultant - Analytics", description says "Oracle Analyst" (Oracle ERP implementation and reporting); 2025-2026 batch preferred; minimum 60% academic cutoff (55% for Maharashtra candidates). Borderline.
+- Job 118 (Portcast): internship, posted 3 months ago; description asks for prior internship experience in a Data Analyst or Business Analyst role.
+- Job 119 (ShareChat): internship; salary shown as "50K INR/month" (a stipend). Keep internships out of the salary analysis, or parse them separately (monthly, not annual). LinkedIn has no employment-type field, so identify internships from the title in Phase 3.
 - posted_ago on LinkedIn includes "Reposted 1 week ago" and "Reposted 2 weeks ago" (jobs 112, 114, 115); derive a reposted flag in Phase 3.
 - Applicants on LinkedIn: "66 people clicked apply" (job 109), "Over 100 applicants" or "Over 100 people clicked apply" (cap); treat only as a 100+ flag.
 - Job titles on jobs 109, 115 and 116 have a trailing space; trim in Phase 3.
+- Duplicate check on LinkedIn rows (ID after currentJobId=): 0 pairs among 15 rows.
 
 ### Limitations (for the Phase 6 write-up)
 
