@@ -1,7 +1,7 @@
 # Questions for this project
 
 1. Skills: Which skills appear most in Data Analyst postings, and how does that differ between fresher roles (0-1 year) and 2+ years?
-2. Cities: Which cities have the most openings, and which have the highest share of fresher roles? (Many postings list several cities; the counting rule is decided in Phase 3.)
+2. Cities: Which cities have the highest share of fresher or entry-level roles, and how does the title mix differ by city? (Collection used a fixed quota per city, so city size is not estimated.)
 3. Salary: Where salary is disclosed, how does it vary by city and by skill? (Expect most postings to hide salary. That’s a finding too.)
 4. Experience gap: What share of postings titled “fresher” or “entry level” still ask for 1+ years?
 5. Titles: Which titles (Business Analyst, MIS Executive, Operations Analyst and so on) ask for the same skills as Data Analyst roles? (Reporting Analyst postings turned out to be too rare on Naukri to compare, which is itself a finding.)
