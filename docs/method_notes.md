@@ -156,6 +156,18 @@
 - Job titles on jobs 109, 115 and 116 have a trailing space; trim in Phase 3.
 - Duplicate check on LinkedIn rows (ID after currentJobId=): 0 pairs among 15 rows.
 
+### LinkedIn, Hyderabad block (jobs 120 to 131)
+
+- Hyderabad block done, 12 rows (jobs 120 to 131). Title mix: Data Analyst 4, Business Analyst 3, entry-level (Associate or Intern) 3, Operations 1, MIS 1. Date posted filter not used (too few postings with it); posted_ago runs from 1 week to 4 months, filter in Phase 3.
+- Seniority: only jobs 125 (under 2 years) and 130 (intern, 0 to 6 months) are clearly entry-level. Job 126 "Associate" asks 3 to 5 years; job 122 "Data Analyst" asks 7+ years; job 127 asks 7.5 years (ServiceNow).
+- Job 120 (Syneos): headline "Data Analyst I", city shown as Serilingampalli, Telangana; work is ADF/Databricks data engineering, DP-203 certification, EST shifts; off-target, exclude candidate.
+- Job 126 (Amgen): headline "Associate Data Analytics", description is data quality and governance, 3 to 5 years; borderline.
+- Job 123 (vidaXL): portal work mode On-site, description says semi hybrid (4 days office); words run together where line breaks were lost.
+- Job 130: company shown as "Leadrat Real Estate CRM - Dubai | India", description says Dhinwa Solutions Pvt. Ltd.; city "Greater Hyderabad Area"; internship; description ends with a "Skills:" line.
+- Job 131: description says 3-5 years and "Must have 3-6 years"; night shifts.
+- Jobs 124, 125 and 115: LinkedIn appends "Benefits found in job post" to the description; strip in Phase 3.
+- Jobs 125 and 131: email address in description replaced with [removed]. Job 128 title and job 129 company cells had line breaks; cleaned.
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
