@@ -168,6 +168,19 @@
 - Jobs 124, 125 and 115: LinkedIn appends "Benefits found in job post" to the description; strip in Phase 3.
 - Jobs 125 and 131: email address in description replaced with [removed]. Job 128 title and job 129 company cells had line breaks; cleaned.
 
+### LinkedIn, Pune block (jobs 132 to 146)
+
+- Pune block done, 15 rows (jobs 132 to 146). Jobs 141 (Navi Mumbai), 144 (Mumbai) and 146 (Navi Mumbai) have Mumbai city fields, so Pune proper is 12 rows. Title mix by actual title: Data Analyst 5, Business Analyst 3, Associate 2 (136, 146), Intern 3 (142, 143, 144), Operations 1 (145), MIS 1 (137). No Operations Analyst titles found in Pune; "Business Operations Intern" and "Operations Support Analyst" used instead.
+- Seniority: all three BA postings are senior (138: 5 to 10 years; 139: AVP; 140: 6+ years). Entry-level roles are the interns, job 136 (0 to 2 years) and job 145 ("Ops Sup Analyst 1").
+- Job 141 (Zema Global): same posting as Naukri job 77 (same company, title and description); cross-portal duplicate, collapse in Phase 3 by company, title and city. Its URL carries a salary filter parameter (f_SAL), so a salary filter was active for that search.
+- Job 140 (SailPoint): email address in description replaced with [removed]; "Sr. Business Analyst", 6+ years; words glued where line breaks were lost; applicants "79 people clicked apply" (below the 100 cap).
+- Job 133 (Wynisco): reposted 3 months ago; description starts with scraped company metadata (Website, Business Type, Funding Stage), same as job 111.
+- Job 137 (Mercedes-Benz dealership): MIS role that includes lead and DMS data entry; description ends with empty template headings.
+- Job 143 (Celoxis): internship, stipend shown as "20K INR/month - 25K INR/month"; keep out of annual salary analysis. Words glued where line breaks were lost.
+- Job 146 (Mastercard): headline "Associate Analyst", work is KPI monitoring and incident management on 24x7 rotational shifts, 1 to 3 years; not counted as Operations.
+- Job 136 (Blue Matter): description ends with a website, "Powered by JazzHR" and a stray code; strip in Phase 3.
+- Job 139 (Deutsche Bank): AVP-level "Business Functional Analyst".
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
@@ -185,3 +198,4 @@
 - Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 is answered only as share of fresher roles and title mix per city, not city size. Revisit the wording of Question 2 in Phase 3.
 - Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
 - LinkedIn Date posted filter was not used (too few postings with it). About 6 of 23 LinkedIn rows in Bengaluru and Hyderabad are 2 months old or older, so "current openings" may be overstated; filter on posted_ago in Phase 3.
+- Cross-portal duplicates exist (job 141 on LinkedIn is the same posting as Naukri job 77); URL-ID checks only catch duplicates within a portal, so dedupe across portals by company, title and city in Phase 3.
