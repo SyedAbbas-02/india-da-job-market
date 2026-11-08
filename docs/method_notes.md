@@ -194,6 +194,19 @@
 - Salary formats on LinkedIn include "K INR/yr", "M INR/yr" (job 147: 500K - 1.7M, job 156: 1M - 1.5M) and "K INR/month" (stipends, jobs 119 and 143); one parsing rule needed in Phase 3.
 - Words glued where line breaks were lost on jobs 148, 153 and 157.
 
+### LinkedIn, Mumbai block (jobs 160 to 171)
+
+- Mumbai block done, 12 rows (jobs 160 to 171); with jobs 141, 144 and 146 that makes 15 Mumbai-area LinkedIn rows. Title mix by actual title: Data Analyst 2, Associate-titled 4, Business Analyst 2, Operations 1, MIS 1, other 2 (161 Risk Analyst, 169 Business Insights Analyst).
+- Job 170 (PivotRoots) is the same posting as Naukri job 82 (Havas Media); cross-portal duplicate, collapse in Phase 3. Jobs 160 and 164 (IDFC FIRST Bank, Cx and Collections) share a near-identical template for two business units; separate postings.
+- Job 161 (Experian): "Risk Analyst - Data Science & Analytics", predictive modelling and ML, 3+ years; off-target and off-plan title, exclude candidate.
+- Job 165 (JPMorgan): FP&A, US GAAP and month-end close work, 5+ years; finance role, exclude candidate.
+- Job 168 (Axis Finance): "Business Analyst" in name only (deal structuring, client relationships, covenant monitoring, audits); posted 3 months ago; exclude candidate.
+- Job 163 (BlackRock): "Associate" title but 5+ years, analytics engineering and BI; borderline.
+- Seniority: only job 170 (0 to 2 years) and job 167 (1 to 3 years) are junior; three of the four Associate-titled rows ask 3 to 5+ years. No interns in this block.
+- Job 166 (Media.net): title has a requisition number appended; description has words glued together throughout; "Requirements added by the job poster" block to strip.
+- Job 169 (TaskUs): description says "Posted At: Wed Sep 23 2026" while LinkedIn says "Reposted 1 day ago"; refreshed posting.
+- LinkedIn city formats vary: "Mumbai Metropolitan Region", "Navi Mumbai", "Pune Division", "Pune City", "Pune District", "Pune/Pimpri-Chinchwad Area", "Greater Hyderabad Area", "Serilingampalli, Telangana"; standardize in Phase 3.
+
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
