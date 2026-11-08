@@ -225,3 +225,4 @@
 - Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
 - LinkedIn Date posted filter was not used (too few postings with it). About 6 of 23 LinkedIn rows in Bengaluru and Hyderabad are 2 months old or older, so "current openings" may be overstated; filter on posted_ago in Phase 3.
 - Cross-portal duplicates exist (job 141 on LinkedIn is the same posting as Naukri job 77); URL-ID checks only catch duplicates within a portal, so dedupe across portals by company, title and city in Phase 3.
+- LinkedIn rows skew toward large multinationals and financial-services captive centers (Mastercard, JPMorgan, BlackRock, Citi, Deutsche Bank, Experian and others), unlike Naukri, which has more small and mid-size firms. Entry-level postings on LinkedIn are rare and often carry "Associate" titles that ask for 3 to 5+ years.
