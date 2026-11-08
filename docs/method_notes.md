@@ -141,13 +141,29 @@
 
 ### LinkedIn, Bengaluru block (jobs 109 to 122)
 
--
+- LinkedIn Bengaluru block so far: 8 rows (jobs 109 to 116). Title mix: Data Analyst 3, Business Analyst 3, Operations 1, MIS 1, Fresher/Junior DA 0. Operations and MIS searches returned few postings, mostly off-target. Date posted filter was not applied for this block (job 111 is 6 months old); applied from the next block.
+- LinkedIn postings in this block skew senior: jobs 109, 110, 112 ask for 3+ years; only job 113 (Schneider, "Business Analyst I", no years stated) is clearly entry-level. LinkedIn has no experience field; extract from description in Phase 3.
+- Salary format on LinkedIn: "400K INR/yr - 800K INR/yr" (job 111). Parsing rule needed in Phase 3 (400K = 4 LPA). Job 111 description starts with scraped company metadata (Website, Business Type, Funding Stage, Salary Range); strip in Phase 3.
+- Job 110 (Sutherland): description says "Experience: 5 -10 years" and lists Hyderabad, Mumbai, Chennai and Bangalore; it ends with a "Requirements added by the job poster" block (4+ years MySQL, PostgreSQL, Databases), which is LinkedIn screening text, not the description; strip before extraction.
+- Jobs 110 and 112: words glued where line breaks were lost ("Job DescriptionAs a", "Key Skills RequiredExperience"). Same as job 105 on Naukri; skill extraction must handle it.
+- Job 116 (Hector Beverages): description ends with empty template headings (Designation, Function, Sub-function and so on); strip in Phase 3.
+- posted_ago on LinkedIn includes "Reposted 1 week ago" and "Reposted 2 weeks ago" (jobs 112, 114, 115); derive a reposted flag in Phase 3.
+- Applicants on LinkedIn: "66 people clicked apply" (job 109), "Over 100 applicants" or "Over 100 people clicked apply" (cap); treat only as a 100+ flag.
+- Job titles on jobs 109, 115 and 116 have a trailing space; trim in Phase 3.
 
 ### Limitations (for the Phase 6 write-up)
 
 - Naukri sort order varied across blocks (Date or a mix in Bangalore and Hyderabad, Relevance from Pune onward), so sampling is not strictly uniform.
 - Pune has 15 rows against 14 for other Naukri cities.
-- Relevance sort returns many old postings (some from 2023 to 2025 by URL ID date), so "current openings" may be overstated; filter on URL date in Phase 3.
+- Relevance sort returns many old postin - LinkedIn Bengaluru block so far: 8 rows (jobs 109 to 116). Title mix: Data Analyst 3, Business Analyst 3, Operations 1, MIS 1, Fresher/Junior DA 0. Operations and MIS searches returned few postings, mostly off-target. Date posted filter was not applied for this block (job 111 is 6 months old); applied from the next block.
+- LinkedIn postings in this block skew senior: jobs 109, 110, 112 ask for 3+ years; only job 113 (Schneider, "Business Analyst I", no years stated) is clearly entry-level. LinkedIn has no experience field; extract from description in Phase 3.
+- Salary format on LinkedIn: "400K INR/yr - 800K INR/yr" (job 111). Parsing rule needed in Phase 3 (400K = 4 LPA). Job 111 description starts with scraped company metadata (Website, Business Type, Funding Stage, Salary Range); strip in Phase 3.
+- Job 110 (Sutherland): description says "Experience: 5 -10 years" and lists Hyderabad, Mumbai, Chennai and Bangalore; it ends with a "Requirements added by the job poster" block (4+ years MySQL, PostgreSQL, Databases), which is LinkedIn screening text, not the description; strip before extraction.
+- Jobs 110 and 112: words glued where line breaks were lost ("Job DescriptionAs a", "Key Skills RequiredExperience"). Same as job 105 on Naukri; skill extraction must handle it.
+- Job 116 (Hector Beverages): description ends with empty template headings (Designation, Function, Sub-function and so on); strip in Phase 3.
+- posted_ago on LinkedIn includes "Reposted 1 week ago" and "Reposted 2 weeks ago" (jobs 112, 114, 115); derive a reposted flag in Phase 3.
+- Applicants on LinkedIn: "66 people clicked apply" (job 109), "Over 100 applicants" or "Over 100 people clicked apply" (cap); treat only as a 100+ flag.
+- Job titles on jobs 109, 115 and 116 have a trailing space; trim in Phase 3.gs (some from 2023 to 2025 by URL ID date), so "current openings" may be overstated; filter on URL date in Phase 3.
 - Chennai has few Data Analyst, MIS and Operations postings on Naukri, so its block is mostly Business Analyst.
 - Collection used a fixed quota per city, so the sample cannot show which city has the most openings. Question 2 is answered only as share of fresher roles and title mix per city, not city size. Revisit the wording of Question 2 in Phase 3.
 - Excel duplicate highlighting on the description column did not flag known identical pairs (jobs 1/4, 30/33, 59/72), so repost detection is done in Pandas in Phase 3, not in Excel.
