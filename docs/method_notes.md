@@ -4,7 +4,7 @@
 
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
-- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (jobs 197 to 206, 10 rows), Pune (jobs 207 to 216, 10 rows) and Chennai (jobs 217 to 225, 9 rows) done; 43 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Mumbai from job 226, then Delhi/NCR, then Foundit (target 60).
+- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (197 to 206, 10), Pune (207 to 216, 10), Chennai (217 to 225, 9) and Mumbai (226 to 233, 8) done; 51 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Delhi/NCR from job 234 (9 rows), then Foundit (target 60).
 - Update this section each time a portal closes.
 
 ## Collection rules
@@ -321,6 +321,22 @@
 - Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
 - Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
 - Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
+### Indeed, Mumbai block (jobs 226 to 233)
+
+- Indeed Mumbai block done, 8 rows (planned 9). Title mix by actual title: Data Analyst 3 (226 to 228), Business Analyst 1 (229), MIS 2 (230, 231), Associate 1 (232), Trainer 1 (233). No Operations Analyst, Intern, Junior or Fresher titles.
+- Searches: "data analyst" page 1 (226 to 228), "business analyst" page 3 (229; only one on-target Business Analyst found), "mis executive" pages 1 and 2 (230, 231), "associate data analyst" (232), "data analyst intern" page 4 (233; no intern titles found), "operations analyst" (no on-target postings found). Location Mumbai, Maharashtra, radius 25.
+- MIS cap of 1 per city was broken again (2 MIS rows); MIS rows are now 9 of the 49 non-pilot Indeed rows (jobs 193, 194, 195, 204, 214, 222, 225, 230, 231).
+- Job 233 (Gigatorb): Data Science & Data Analytics Trainer in Thane, 5 to 6 years, "Full-Time / Part-Time / Contract / Freelance", ₹40,000 - ₹60,000 a month; teaching role found on the intern search; off-target (same as pilot job 10), exclude candidate. City field is Naupada, Thane, not Mumbai.
+- Job 231 (Moksha Retails Global): headline "Senior MIS Analyst", description "MIS & Business Analyst", 8 to 10 years, strong BI and AI knowledge, 6 days a week, ₹50,000 - ₹60,000 a month; email appeared twice and the second one was missed at first (replaced with [removed] afterwards); headings glued together ("Key ResponsibilitiesMIS and reporting"); company shown as "Moksha Retails Global Pvt Ltd", text says Unione Group and Moksha Enterprises.
+- Job 226 (Sia): headline "Data Analyst", description "Power BI Developer", 3 to 6 years, mandatory PL-300, internal Finance and HR reporting; city field is a street address (Supreme Business Park, Hiranandani Gardens).
+- Job 227 (Sounce Retail): "Data Analyst", description says 0 to 6 months and portal says Fresher, ₹10,000 - ₹15,000 a month; second clean fresher Data Analyst on Indeed after job 217. City field "Chinchpokli".
+- Job 228 (Unistanz Software): 3 to 5 years, Advanced Excel and macros, ₹5,00,000 - ₹7,00,000 a year; description ends with an Indeed "Application Question(s)" block (numbered 2 to 10, then 1) asking current salary and notice period, strip in Phase 3; role overview repeated twice; company website link in the text.
+- Job 229 (MobileProgramming): "Business Analyst (BA)", software requirements work (BRD, FRD, JIRA, UAT), 5+ years, "Basic SQL, Data Analysis" as one skill; sentences run together where line breaks were lost; borderline.
+- Job 230 (Emgage): MIS Executive, 2 to 4 years; description is only an experience and skills fragment ending with a "Skills:" line, no responsibilities.
+- Job 232 (Games2win): "Associate Analytics" asks "Minimum 2+ Years" and also "at least 1 year" in a technical or analytics function; BigQuery, Excel, SQL; reports to the Head of Revenue; company website link in the text. Entry-level title with an experienced requirement (Question 4).
+- Salary shown on 4 of 8 rows (227, 228, 231, 233); job 233 excluded with the trainer role.
+- Experience in this block (description): 227 (0 to 6 months) is entry-level; 230 asks 2 to 4, 232 asks 2+, 226 asks 3 to 6, 228 asks 3 to 5, 229 asks 5+, 231 asks 8 to 10, 233 asks 5 to 6.
+- Duplicate check on all Indeed rows (jk/vjk value, 51 rows including the 2 pilot rows): 0 duplicate pairs.
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -345,3 +361,5 @@
 - Pimpri-Chinchwad postings (210, 214) are counted as Pune-area rows; the primary city rule is set in Phase 3.
 - Indeed MIS Executive rows are over-represented against the plan (7 of 41 non-pilot rows), so Question 5 compares more MIS rows than Operations rows on Indeed.
 - The Indeed "operations analyst" search mostly returns Revenue Operations or Product Operations roles, so the Operations group on Indeed is not classic operations analyst work.
+- Indeed Business Analyst rows are mostly software requirements or reconciliation work (jobs 189, 198, 202, 220, 229), and Mumbai returned only one on-target Business Analyst posting; the Business Analyst group on Indeed is thin and not data-heavy.
+- No on-target Operations Analyst postings were found on Indeed in Hyderabad or Mumbai, and the ones found elsewhere are Revenue or Product Operations roles (jobs 192, 213, 223).
