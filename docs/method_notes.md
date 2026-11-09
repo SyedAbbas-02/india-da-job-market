@@ -4,7 +4,7 @@
 
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
-- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows) and Hyderabad (jobs 197 to 206, 10 rows) done; 24 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Pune from job 207, then Foundit (target 60).
+- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (jobs 197 to 206, 10 rows) and Pune (jobs 207 to 216, 10 rows) done; 34 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Chennai from job 217, then Mumbai and Delhi/NCR, then Foundit (target 60).
 - Update this section each time a portal closes.
 
 ## Collection rules
