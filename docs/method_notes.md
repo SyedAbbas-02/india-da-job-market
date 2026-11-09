@@ -4,7 +4,7 @@
 
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
-- Indeed in progress: Bengaluru done (jobs 185 to 196, 12 rows; 14 Indeed rows with the 2 pilot rows), target 60. Next: Indeed Hyderabad from job 197, then Foundit (target 60).
+- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows) and Hyderabad (jobs 197 to 206, 10 rows) done; 24 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Pune from job 207, then Foundit (target 60).
 - Update this section each time a portal closes.
 
 ## Collection rules
@@ -256,6 +256,25 @@
 - Duplicate check on Indeed rows (jk/vjk value, helper-column formula, including the 2 pilot rows): 0 duplicate pairs. Cross-portal duplicates are not covered by this check and are handled in Phase 3.
 - Indeed shows no posted_ago on the postings, so posted_ago is Not mentioned for all Indeed rows. Posting age cannot be filtered for Indeed in Phase 3; only dates that appear inside a description (for example job 190, "Date Opened 04/09/2025") are usable. Indeed rows may include old postings, which overstates current openings.
 
+### Indeed, Hyderabad block (jobs 197 to 206)
+
+- Indeed Hyderabad block done, 10 rows (planned 9). Title mix by actual title: Data Analyst 4, Business Analyst 2, Junior or Associate or Fresher-titled 3 (200, 201, 205), MIS 1 (204), Operations 0.
+- Search queries: "data analyst" (jobs 197 to 203), "mis executive" (204), "associate data analyst" (205), "data analyst intern" (206). Business Analyst jobs 198, 201 and 202 and the Implementation Analyst job 200 came from the "data analyst" search, not from a "business analyst" search, so they were not sampled by title; the same holds for Bengaluru jobs 188 and 189. From Pune onward, Business Analyst rows come from a "business analyst" search.
+- Experience_portal shows "Fresher" on jobs 200 and 202 (first Indeed rows with a value); copied as shown. Work mode shown on job 203 ("Remote"). Salary shown on jobs 202 and 204.
+- Job 202 (srinivasa traders): headline "Business Analyst", description "Junior Business Analyst" for software requirements work (BRD, FRD, UAT), SQL only an advantage; portal salary "₹4,19,000 - ₹6,40,000 a year" (Indian grouping) while the description says "₹419,000.00 - ₹640,000.00 per year"; high for a fresher role, check as outlier in Phase 3; company name in lowercase; email replaced with [removed]; "Work Location: In person" appears twice.
+- Job 204 (Aditya Music): salary_portal ₹18,000 - ₹25,000 a month (first entered as Not disclosed by mistake, corrected after checking the posting header against the description). Company name has " – Hyderabad" appended.
+- Job 203 (Tribute Technology): headline "Data Analyst", description says "Senior Analytics professional" and 7+ years; fully remote role ("Fully remote across India", #India-remote), so the Hyderabad city tag is the search location. Phase 3 needs a rule for remote postings and city.
+- Job 206 (Tanla Platforms): headline "Data Analyst", 5 to 7 years, found through the "data analyst intern" search; zero-width characters and an empty "Job Role" heading in the text.
+- Job 197 (Alpha Terra): headline "Data Analyst", description title "Data Analytics", "minimum one year working eperience" (typo), asks for ML models (Decision Tree, Random Forest) and collecting data from Magicbricks and OLX; pay "Based on skills & learning curve" in the description; "Work Location: In person" twice; city field includes the area "Banjara Hills".
+- Job 198 (Caribou Media): software Business/Systems Analyst with QA and partner integration; SQL one of many requirements; borderline. No years stated.
+- Job 199 (Saaki Argus & Averil Consulting): Power BI, DAX, SQL and Power Query responsibilities only; no requirements section, no experience, employer not named.
+- Job 200 (ZeroCodeHR): "Implementation Analyst (Fresher)", software implementation, QA and SQL reporting, 0 to 1 years; off-plan title, borderline. Encoding glitches in the text (customerâ€™s, clientâ€™s, Bachelorâ€™s); fix in Phase 3, not in the raw sheet.
+- Job 201 (Irish Expert): "Junior Business Analyst – NCO (B2B)", immigration and consulting firm, sales and business analysis, 0 to 2 years; SQL, Power BI and Tableau only "preferred".
+- Job 205 (TriNet): "Associate Data Analyst", data entry, reconciliation and routine reporting, "Typically < 2 years" (needs a "less than" parsing rule); long diversity and EEO boilerplate; email replaced with [removed]; description says 100% in office while work_mode_portal is Not mentioned.
+- Experience in this block (description): 200 (0 to 1), 201 (0 to 2), 202 (fresh graduates) and 205 (< 2) are entry-level; 197 and 204 ask 1 year; 203 asks 7+ and 206 asks 5 to 7; 198 and 199 state no years. No clean fresher Data Analyst posting.
+- No Operations Analyst posting collected in Hyderabad: the "operations analyst" search returned no on-target postings.
+- Duplicate check on all Indeed rows (jk/vjk value, Bengaluru plus Hyderabad, 24 rows including the 2 pilot rows): 0 duplicate pairs.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
@@ -281,3 +300,5 @@
 - Indeed rows come from keyword searches (fresher, intern, mis executive, data analyst) with the default 25 km radius, so the title groups are keyword-driven and the radius can include nearby towns.
 - Indeed shows salary on very few postings and has no experience or skill fields, so Indeed adds little to Question 3 and relies on description extraction for everything else.
 - Indeed has no posting date, so old postings cannot be removed from Indeed rows.
+- Indeed Business Analyst rows from Bengaluru and Hyderabad (jobs 188, 189, 198, 201, 202) came from "data analyst" or "fresher" keyword searches, not from a "business analyst" search, so Question 5 may under-sample Business Analyst postings on Indeed.
+- Most Business Analyst postings found on Indeed so far are software requirements or reconciliation roles with little data work.
