@@ -283,6 +283,7 @@
 - Job 79 (MitKat) was checked against 30 and 33 and is not a repost.
 - Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
 - Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
+- Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -302,3 +303,6 @@
 - Indeed has no posting date, so old postings cannot be removed from Indeed rows.
 - Indeed Business Analyst rows from Bengaluru and Hyderabad (jobs 188, 189, 198, 201, 202) came from "data analyst" or "fresher" keyword searches, not from a "business analyst" search, so Question 5 may under-sample Business Analyst postings on Indeed.
 - Most Business Analyst postings found on Indeed so far are software requirements or reconciliation roles with little data work.
+- Indeed Pune Data Analyst rows were taken from result pages 2 to 8 (start=10 to 70), so they are not the top-ranked results.
+- Indeed Pune shows salary on 6 of 10 rows, more than Bengaluru or Hyderabad, but 2 of those are internship stipends and 1 is a 25+ LPA contract role (outlier).
+- Pimpri-Chinchwad postings (210, 214) are counted as Pune-area rows; the primary city rule is set in Phase 3.
