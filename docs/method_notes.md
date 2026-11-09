@@ -233,6 +233,29 @@
 - LinkedIn closed at 80 rows (including 4 pilot rows).
 - Duplicate check on all Naukri rows and all LinkedIn rows, run separately per portal (Naukri: URL text before the "?"; LinkedIn: currentJobId): 0 duplicate pairs. Cross-portal duplicates are not covered by this check and are handled in Phase 3 (see the list above).
 
+### Indeed, Bengaluru block (jobs 185 to 196)
+
+- Indeed Bengaluru block done, 12 rows (planned 10). Title mix by actual title: Data Analyst 5, Business Analyst 2, Associate 1 (191), Operations 1 (192), MIS 3 (193 to 195). No Junior, Fresher, Trainee or Intern titles. Job 188 has "(0 - 1 Year)" in the title but does not match the entry-level title rule; decide in Phase 3.
+- Searches used: "data analyst fresher" (jobs 185 to 190), "data analyst intern" (191, 192), "mis executive" (193 to 195), "data analyst" (196), location Bangalore City, radius 25 (default). The "fresher" keyword returned roles asking 2 to 5 years, so Indeed rows from keyword searches do not reflect a clean fresher group. From Hyderabad on, plain titles are searched for Data Analyst, Business Analyst, MIS and Operations, and fresher/junior/intern keywords only for the entry-level slots.
+- URLs copied from the search page carry vjk= (viewed job key) instead of jk=; same value. The duplicate formula looks for "jk=" and works for both: =MID(L2,FIND("jk=",L2)+3,16).
+- Salary shown on 2 of 12 rows (193, 194), both MIS Executive. Formats: "₹25,000 - ₹50,000 a month" and "₹4,00,000 - ₹5,00,000 a year" (Indian digit grouping). One parsing rule needed in Phase 3 (monthly x 12, then divide by 100,000).
+- Indeed has no experience field and no skill tags: experience_portal is Not mentioned and skills_portal is No tags for all rows. Work mode shown on 1 row (196, "Hybrid work").
+- Job 186 (Cognoid): headline "DATA ANALYST", work is manual and automation testing (Selenium, JMeter); off-target, exclude candidate. Description has check-mark symbols and no requirements section.
+- Job 189 (GetixHealth): Business Analyst, healthcare payment reconciliation (Epic, revenue cycle) with SQL and Excel; borderline. City field is only "Karnataka".
+- Job 192 (Instawork): Product Operations Analyst, mostly automation (n8n, Zapier) and data quality; borderline. Company shown as "Instawork Internal"; US-focused company text.
+- Job 193 (Assettrust): MIS Executive mixed with sales coordination and flat handover paperwork; borderline. Description ends with an Indeed block (Education: Bachelor's, Experience: Sales analysis 1 year Required, Work Location: In person) and repeats the salary. Company shown as "Assettrust Services", description says "Asset Trust Services".
+- Job 194 (Apna): title "MIS Executive- Bangalore", description title "Business Analyst (MIS)", 2 to 4 years, SQL and data pipelines; city in the title.
+- Job 195 (Avery Dennison): "Operations MIS - Data Analyst", 3 to 4 years; description says "Work model: On-site" while work_mode_portal is Not mentioned. City field is a street name.
+- Job 190 (Thoucentric): description starts with a "Job Information" table (Required Skills cut off, "Date Opened 04/09/2025", Work Mode Hybrid); the same description asks "3-5 years" and "2-4 years". Date format ambiguous; probably an old posting.
+- Job 187 (Garuda Aerospace): description starts with "Bangalore, Chennai" and a "Sales & Business Development" line; 2 to 3 years (en dash). Expect it again in the Chennai block.
+- Job 188 (Informica Solutions): description cut off mid-sentence, one bullet repeated, hard line breaks; URL ends with a stray backslash (removed).
+- Job 191 (PhonePe): city field is a full office address; description has long company and benefits boilerplate; 0.5+ years.
+- Job 196 (GoTymeX): "Requirements" heading appears twice; asks 2+ years in financial services and mentions GDPR.
+- Experience in this block: only 191 (0.5+) is entry-level; 187, 190, 194, 195, 196 ask 2 or more years; 185, 186, 189, 192 state no years.
+- City formats on Indeed: "Karnataka", street names, area names ("HSR Layout") and full addresses; standardize in Phase 3.
+- Duplicate check on Indeed rows (jk/vjk value, helper-column formula, including the 2 pilot rows): 0 duplicate pairs. Cross-portal duplicates are not covered by this check and are handled in Phase 3.
+- Indeed shows no posted_ago on the postings, so posted_ago is Not mentioned for all Indeed rows. Posting age cannot be filtered for Indeed in Phase 3; only dates that appear inside a description (for example job 190, "Date Opened 04/09/2025") are usable. Indeed rows may include old postings, which overstates current openings.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
@@ -240,6 +263,7 @@
 - Cross-portal: Naukri job 77 and LinkedIn job 141 (Zema Global); Naukri job 82 and LinkedIn job 170 (Havas Media / PivotRoots)
 - Job 79 (MitKat) was checked against 30 and 33 and is not a repost.
 - Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
+- Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -254,3 +278,6 @@
 - Cross-portal duplicates exist (Naukri job 77 and LinkedIn job 141; Naukri job 82 and LinkedIn job 170); URL-ID checks only catch duplicates within a portal, so dedupe across portals by company, title and city in Phase 3.
 - LinkedIn rows skew toward large multinationals and financial-services captive centers (Mastercard, JPMorgan, BlackRock, Citi, Deutsche Bank, Experian and others), unlike Naukri, which has more small and mid-size firms. Entry-level postings on LinkedIn are rare and often carry "Associate" titles that ask for 3 to 5+ years.
 - Operations Analyst and MIS postings are thin on both portals, which weakens Question 5.
+- Indeed rows come from keyword searches (fresher, intern, mis executive, data analyst) with the default 25 km radius, so the title groups are keyword-driven and the radius can include nearby towns.
+- Indeed shows salary on very few postings and has no experience or skill fields, so Indeed adds little to Question 3 and relies on description extraction for everything else.
+- Indeed has no posting date, so old postings cannot be removed from Indeed rows.
