@@ -275,6 +275,24 @@
 - No Operations Analyst posting collected in Hyderabad: the "operations analyst" search returned no on-target postings.
 - Duplicate check on all Indeed rows (jk/vjk value, Bengaluru plus Hyderabad, 24 rows including the 2 pilot rows): 0 duplicate pairs.
 
+### Indeed, Pune block (jobs 207 to 216)
+
+- Indeed Pune block done, 10 rows (planned 9). Title mix by actual title: Data Analyst 4 (207 to 210), Business Analyst 2 (211, 212), Operations 1 (213), MIS 1 (214), Intern 2 (215, 216). No Junior, Fresher, Trainee or Associate titles.
+- Search queries: "data analyst" (207 to 210, taken from result pages 2 to 8, start=10, 20, 60 and 70, not the top results), "business analyst" (211, 212, page 3), "operations analyst" (213), "mis executive" (214), "associate data intern" (215, 216), location Pune, Maharashtra, radius 25. Business Analyst rows were sampled by a "business analyst" search as planned.
+- Salary shown on 6 of 10 rows (208, 209, 210, 214, 215, 216), far more than in the earlier Indeed blocks. Formats: annual with Indian grouping (210: "₹3,00,000 - ₹5,00,000 a year"), open-ended ("From ₹25,00,000 a year", job 208, description says "Budget: 25–26 LPA"), monthly (209, 214, 215, 216). Descriptions repeat the pay with western grouping and ".00". Parsing rule for Phase 3: strip the symbol, commas and ".00"; "From" means minimum only; monthly x 12, then divide by 100,000. Jobs 215 and 216 are internships (stipends), excluded from salary analysis.
+- Job 208 (Clock Edge Technologies): contract Qlik Sense developer, 9 to 12 years, "Contract basis third party payroll artech" and a staffing requisition ID in the text; 25+ LPA is an outlier; company name truncated ("Pvt Lt"); title "Data Analytics". On-target work, senior, staffing-agency posting.
+- Job 207 (Hexanika): 3+ years, SQL, data modelling and test-data work in the BFS domain; header says "Role & Responsibilities" but holds requirements; typo "Wellworsed"; email replaced with [removed].
+- Job 209 (Nyati Technologies): title "Data analytics" in lowercase; city field has "Ajmera Morwadi Road, Pimpri, Pune"; description has responsibilities only, no experience; pay repeated in the description.
+- Job 210 (Foxberry Technology): title "Data Analyst-2+year" (experience in the title, description states no years); city "Pimpri-Chinchwad"; "Knowledge of Marathi is essential"; work includes digital marketing and social media campaign reporting.
+- Job 211 (AlphaSense): "Business Analyst II", content strategy and due diligence work, the description calls the role "Content Analyst", 3+ years, SQL/Python only "ideally some"; long fraud-warning paragraph with an email replaced by [removed]; "II" is not an entry-level marker; borderline.
+- Job 212 (Netrix Global): "Business Analyst, Service Desk Reporting & Analytics", ServiceNow and Power BI/DAX, 5+ years, shift 1 PM to 11 PM IST; description says the role can be remote with some travel; email replaced with [removed]; company website link in the text.
+- Job 213 (Madison Logic): "Revenue Operations Analyst", Sales Ops and GTM reporting (Looker Studio, Snowflake, Salesforce), 2+ years, US-based team; found through the "operations analyst" search but not classic operations; decide in Phase 3 whether it counts in the Operations group for Question 5. Non-breaking hyphens (‑) in the text, doubled quotation marks, long company and privacy boilerplate, hybrid and remote text while work_mode_portal is Not mentioned.
+- Job 214 (MBWortld Exim): generic MIS definition with citation markers ([1]) throughout, lists ChatGPT/Claude, Zapier and Apps Script as skills; salary range ₹11,000 - ₹32,000 a month is very wide; portal experience "Fresher"; city Pimpri-Chinchwad; company name typo "MBWortld". Low-quality posting; strip the [1] markers before skill extraction.
+- Job 215 (Infyco Technology): Data Analyst Intern, 3 to 6 months, stipend ₹12,000 - ₹26,000 a month; asks for students or recent graduates, no years stated; stipend range is wide.
+- Job 216 (We-intern): headline "Data Analyst Intern", but the description is a template for a full-time "Data Analyst", 0 to 2 years, with an unfilled "Location: [Location / Remote]"; portal experience "Fresher"; pay ₹10,000 - ₹20,000 a month; "Work Location: Hybrid remote in Pune". Internship status taken from the title in Phase 3.
+- Experience in this block (description): 207 (3+), 211 (3+), 212 (5+), 208 (9 to 12) and 213 (2+) are experienced; 209, 210, 214 and 215 state no years; 216 says 0 to 2. No clean fresher Data Analyst posting.
+- Duplicate check on all Indeed rows (jk/vjk value, 34 rows including the 2 pilot rows): 0 duplicate pairs.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
