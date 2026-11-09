@@ -4,7 +4,7 @@
 
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
-- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (jobs 197 to 206, 10 rows) and Pune (jobs 207 to 216, 10 rows) done; 34 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Chennai from job 217, then Mumbai and Delhi/NCR, then Foundit (target 60).
+- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (jobs 197 to 206, 10 rows), Pune (jobs 207 to 216, 10 rows) and Chennai (jobs 217 to 225, 9 rows) done; 43 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Mumbai from job 226, then Delhi/NCR, then Foundit (target 60).
 - Update this section each time a portal closes.
 
 ## Collection rules
@@ -293,6 +293,25 @@
 - Experience in this block (description): 207 (3+), 211 (3+), 212 (5+), 208 (9 to 12) and 213 (2+) are experienced; 209, 210, 214 and 215 state no years; 216 says 0 to 2. No clean fresher Data Analyst posting.
 - Duplicate check on all Indeed rows (jk/vjk value, 34 rows including the 2 pilot rows): 0 duplicate pairs.
 
+### Indeed, Chennai block (jobs 217 to 225)
+
+- Indeed Chennai block done, 9 rows. Title mix by actual title: Data Analyst 3 (217 to 219), Business Analyst 1 (220), Business Analytics Analyst 1 (221), MIS 2 (222, 225), Operations 1 (223, Revenue Operations), Intern 1 (224). Entry-level: 1 row against 2 planned; MIS: 2 rows against 1 planned.
+- Searches: "data analyst" page 1 (217 to 219), "business analyst" pages 2 and 3 (220, 221), "mis executive" (222, 225), "operations analyst" (223), "data analyst intern" page 2 (224). Location Chennai, Tamil Nadu, radius 25.
+- MIS Executive rows are 7 of the 41 non-pilot Indeed rows (jobs 193, 194, 195, 204, 214, 222, 225), above the planned 1 per city (3 in Bengaluru, 2 in Chennai). MIS searches returned many on-target postings on Indeed, while Operations Analyst searches returned few (only Revenue or Product Operations roles: jobs 192, 213, 223). This reflects quota choices and search supply, not market share. Cap MIS at 1 per city from Mumbai.
+- Salary shown on 5 of 9 rows (219, 220, 222, 224, 225). New format: "Up to ₹4,80,000 a year" (219), a maximum only; parse as max with no min. Job 224 is a stipend and is excluded from the salary analysis.
+- Job 217 (Infinity crest group): description says "Experience: Fresher" while the title and portal do not; first clean fresher Data Analyst on Indeed, so it counts for Question 4 as entry-level by description. "Responsibilities Requirements" heading merges two sections; em dash in the text.
+- Job 218 (Moving walls): "Data Analyst", but the work is audience measurement and statistical modelling (weighting, sampling, forecasting), 2+ years in advertising or media research, includes web scraping, says "lead the team"; borderline. Company website link in the text.
+- Job 219 (Tint Tone and shade): generic template description, 1 to 3 years, salary "Up to ₹4,80,000 a year".
+- Job 220 (NTN NEI Manufacturing): headline "Business Analyst", software and process analysis (requirements, systems), Excel, SQL, Tableau and Power BI as one bullet; portal experience Fresher, no years in the description; description starts mid-thought with no intro and has inline "•" bullets; company in lowercase; borderline.
+- Job 221 (Intigniz Solutions): "Business Analytics Analyst", Role "Team Manager", ML and statistical modelling, SAS, Adobe Analytics, P&L forecasting; 2 to 5 years and "Bachelor's with 3 years OR Master's with 2 years"; off-target (same kind as Experian job 161), exclude candidate.
+- Job 222 (futurecalls technology): MIS Executive, description is only a skills paragraph with inline "•" bullets, no duties and no experience; portal experience Fresher; company in lowercase.
+- Job 223 (SurveySparrow): second Revenue Operations Analyst (after job 213), CRM admin, lead routing, n8n/Zapier and LLM automation, 1 to 3 years, "a builder role, not a reporting seat"; borderline.
+- Job 224 (Cornixe): "Data Science and Business Analytics Intern", a 1-month edutech internship programme with a performance-based stipend of ₹5,000 - ₹15,000 a month; reads like a training programme; description says "Work Mode: Hybrid" while work_mode_portal is Not mentioned; city field starts with the area "Kottivakkam". Stipend excluded from salary analysis.
+- Job 225 (Royal Land and Developers): MIS Executive for real estate, "3–5 years of MIS experience", ₹35,000 - ₹40,000 a month; typo "Chennnai", unclear "BSF".
+- Experience in this block (description): 217 (Fresher), 224 (freshers and students) and 220 and 222 (portal Fresher, no years stated) are entry-level; 219 and 223 ask 1 to 3; 218 asks 2+; 221 asks 2 to 5; 225 asks 3 to 5.
+- Dash and bullet formats vary (en dash 3–5 and 1–3, hyphen 1-3, em dash, inline "•"); the experience parser needs all of them.
+- Duplicate check on all Indeed rows (jk/vjk value, 43 rows including the 2 pilot rows): 0 duplicate pairs.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
@@ -324,3 +343,5 @@
 - Indeed Pune Data Analyst rows were taken from result pages 2 to 8 (start=10 to 70), so they are not the top-ranked results.
 - Indeed Pune shows salary on 6 of 10 rows, more than Bengaluru or Hyderabad, but 2 of those are internship stipends and 1 is a 25+ LPA contract role (outlier).
 - Pimpri-Chinchwad postings (210, 214) are counted as Pune-area rows; the primary city rule is set in Phase 3.
+- Indeed MIS Executive rows are over-represented against the plan (7 of 41 non-pilot rows), so Question 5 compares more MIS rows than Operations rows on Indeed.
+- The Indeed "operations analyst" search mostly returns Revenue Operations or Product Operations roles, so the Operations group on Indeed is not classic operations analyst work.
