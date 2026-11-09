@@ -321,6 +321,7 @@
 - Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
 - Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
 - Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
+
 ### Indeed, Mumbai block (jobs 226 to 233)
 
 - Indeed Mumbai block done, 8 rows (planned 9). Title mix by actual title: Data Analyst 3 (226 to 228), Business Analyst 1 (229), MIS 2 (230, 231), Associate 1 (232), Trainer 1 (233). No Operations Analyst, Intern, Junior or Fresher titles.
