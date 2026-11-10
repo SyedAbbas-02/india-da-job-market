@@ -348,6 +348,14 @@
 - Experience in this block (description): 227 (0 to 6 months) is entry-level; 230 asks 2 to 4, 232 asks 2+, 226 asks 3 to 6, 228 asks 3 to 5, 229 asks 5+, 231 asks 8 to 10, 233 asks 5 to 6.
 - Duplicate check on all Indeed rows (jk/vjk value, 51 rows including the 2 pilot rows): 0 duplicate pairs.
 
+### Foundit layout and Block 1 notes (Bengaluru)
+
+- Foundit shows experience, salary, industry, skills and posted_ago. It has no Role field, no education field, no work mode and no openings count; those columns are Not mentioned. It also shows Function, Job Type and Employment Type, which have no column and are not collected.
+- Foundit "Key Skills" block includes profile-dependent text ("4 out of 26 preferred skills are a match", "Remove" labels, "You can add or edit skills in profile page"). Only the tag names are copied to skills_portal.
+- Foundit skill tags are copied with a browser console command that finds the "Key Skills" heading and joins the tag text with commas. It skips the profile-dependent lines ("x out of N preferred skills are a match", "Remove", "You can add or edit skills in profile page" and its link text). Tag count is checked against N on the first 3 postings, then spot-checked.
+- Foundit applicants field reads "Be among the first 40 applicants", a threshold, not a count; treat as unusable in Phase 3.
+- Job 244 (Eurofins): headline "Data Analyst", description title "Power BI Developer", 4+ years, Power BI/DAX/SQL Server plus Python and .NET development; borderline. Description starts with long company boilerplate and names an individual (strip in Phase 3). The word "Job Description" appears twice in the text.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
