@@ -5,7 +5,7 @@
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
 - Indeed closed at 61 rows (including 2 pilot rows), target 60: Bengaluru 12 (jobs 185 to 196), Hyderabad 10 (197 to 206), Pune 10 (207 to 216), Chennai 9 (217 to 225), Mumbai 8 (226 to 233), Delhi/NCR 10 (234 to 243). Sheet total after Indeed: about 240 rows (Naukri 99, LinkedIn 80, Indeed 61).
-- Next: Foundit (target 60), numbering continues from job 244.
+- Foundit Bengaluru closed at 11 rows (jobs 245 to 255; job 244 not used). Sheet total about 251 (Naukri 99, LinkedIn 80, Indeed 61, Foundit 11). Next: Foundit Hyderabad from job 256.
 
 ## Collection rules
 
@@ -354,7 +354,28 @@
 - Foundit "Key Skills" block includes profile-dependent text ("4 out of 26 preferred skills are a match", "Remove" labels, "You can add or edit skills in profile page"). Only the tag names are copied to skills_portal.
 - Foundit skill tags are copied with a browser console command that finds the "Key Skills" heading and joins the tag text with commas. It skips the profile-dependent lines ("x out of N preferred skills are a match", "Remove", "You can add or edit skills in profile page" and its link text). Tag count is checked against N on the first 3 postings, then spot-checked.
 - Foundit applicants field reads "Be among the first 40 applicants", a threshold, not a count; treat as unusable in Phase 3.
-- Job 244 (Eurofins): headline "Data Analyst", description title "Power BI Developer", 4+ years, Power BI/DAX/SQL Server plus Python and .NET development; borderline. Description starts with long company boilerplate and names an individual (strip in Phase 3). The word "Job Description" appears twice in the text.
+
+### Foundit, Bengaluru block (jobs 245 to 255)
+
+- Foundit Bengaluru block done, 11 rows (planned 10). Title mix by actual title: Data Analyst 4 (245 to 248), Business Analyst 3 (249 to 251), Associate 1 (254), Intern 1 (255), MIS 1 (252), Operations 1 (253). Job 244 is unused because numbering started at 245.
+- Foundit salary is Not disclosed on all 11 rows. Foundit shows posted_ago on every row (values: hours, days, "a month ago", "2 months ago"), so posting age can be filtered in Phase 3. Job IDs of the older rows (252, 254, 255) are much lower than recent ones; do not derive dates from Foundit IDs.
+- Foundit applicants formats: "Be among the first N applicants", "Over N applicants have applied" (N = 10 to 500). Thresholds, not counts; unusable except as buckets.
+- Foundit company names appear in lowercase on some rows (merck group, refyne india, beyond appliances, prosessed). Job 249 and 250 company is shown as "Amazon Alliance" while the descriptions name ASSPL and ADCI.
+- Foundit skills_portal tags: casing varies (Sql, Bi Tools, make, google sheets); "Quicksight" and "Quick Sight" both appear. Job 249 has tags with commas inside them ("data visualization tools (e.g., capacity modeling, SQL)"), so skills_portal cannot be split on commas in Phase 3 without care. The tag "make" (job 252) collides with the common word when extracting from text. Job 254 tags (web scraping, CSS selectors, R) are listed although the description says they are "not mandatory".
+- industry_type on Foundit: Other on all rows.
+- Job 245 (Eurofins): headline "Data Analyst", description title "Power BI Developer", 4+ years, Power BI/DAX/SQL Server plus Python and .NET development; borderline. Long company boilerplate; names an individual (strip before publishing); "Job Description" appears twice.
+- Job 246 (merck group): headline "Data Analyst", but the work is Snowflake/dbt data engineering, 5+ years; off-target, exclude candidate. "Who You Are" holds the duties and "Your Role" the requirements; two requirement bullets repeat.
+- Job 247 (refyne india): "Data Analyst – Finance", MIS reporting, 3 to 5 years (en dash).
+- Job 248 (Ecolab): Power BI analytics, 3 to 5 years; includes ServiceNow ticket handling and onsite and weekend schedule text; EEO boilerplate.
+- Job 249 (Amazon Alliance): "Business Analyst II" for long-term capacity planning and forecasting, 3+ years, SQL "preferred"; "II" is not an entry-level marker. Title includes the team name.
+- Job 250 (Amazon Alliance): "Business Analyst I, WHS WESE", portal 1 to 3 years, description "1+ years of tax, finance or a related analytical field"; entry-level by the "I" marker but asks for experience (Question 4). Title includes the team name.
+- Job 251 (LSEG): headline "Business Analyst", portal experience Fresher, description asks for "solid experience as a Business Analyst" and shows "Career Stage: Senior Associate"; portal and description disagree. Non-breaking hyphens in the text; long boilerplate and a privacy notice.
+- Job 252 (beyond appliances): MIS Executive for after-sales, 2 to 4 years, no-code and AI automation mandatory, posted 2 months ago. The description starts with the header run together as one line and uses " -" bullets.
+- Job 253 (Delta Capita): "Operations Analyst- FX Options Settlements & Investigations" (no space before the hyphen), settlements and Nostro reconciliation, night shift, 0 to 1 years; finance back-office work, off-target, exclude candidate (same kind as job 108).
+- Job 254 (Euromonitor): "Associate Data Analyst", Fresher, market research data work; clean entry-level row. Hyphens are lost inside words ("longterm", "wellwritten", "handson", "factcheck"); skill extraction in Phase 3 must handle this. posted_ago "Posted a month ago" is a new bucket.
+- Job 255 (prosessed): "Data Analyst Intern - Excel / SQL", asks for 3rd or final year students from IIT/NIT or equivalent; stipend "Competitive" (no number); description says "Remote / Bangalore" while work_mode_portal is Not mentioned; contact line shows Foundit's own "[Confidential Information]".
+- Experience in this block (description): 253 (0 to 1) and 254 and 255 (students or no years) are entry-level; 250 asks 1+; 252 asks 2 to 4; 247, 248 ask 3 to 5; 249 asks 3+; 245 asks 4+; 246 asks 5+; 251 states no years but asks for solid experience.
+- No reposts or cross-portal matches spotted by eye; detection is in Pandas.
 
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
