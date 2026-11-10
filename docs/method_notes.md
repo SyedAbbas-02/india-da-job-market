@@ -5,7 +5,7 @@
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
 - Indeed closed at 61 rows (including 2 pilot rows), target 60: Bengaluru 12 (jobs 185 to 196), Hyderabad 10 (197 to 206), Pune 10 (207 to 216), Chennai 9 (217 to 225), Mumbai 8 (226 to 233), Delhi/NCR 10 (234 to 243). Sheet total after Indeed: about 240 rows (Naukri 99, LinkedIn 80, Indeed 61).
-- Foundit Bengaluru closed at 11 rows (jobs 245 to 255; job 244 not used). Sheet total about 251 (Naukri 99, LinkedIn 80, Indeed 61, Foundit 11). Next: Foundit Hyderabad from job 256.
+- Foundit Hyderabad closed at 9 rows (jobs 256 to 264). Foundit total 20 rows (jobs 245 to 264). Sheet total about 260 (Naukri 99, LinkedIn 80, Indeed 61, Foundit 20). Next: Foundit Pune from job 265.
 
 ## Collection rules
 
@@ -378,6 +378,25 @@
 - Experience in this block (description): 253 (0 to 1) and 254 and 255 (students or no years) are entry-level; 250 asks 1+; 252 asks 2 to 4; 247, 248 ask 3 to 5; 249 asks 3+; 245 asks 4+; 246 asks 5+; 251 states no years but asks for solid experience.
 - No reposts or cross-portal matches spotted by eye; detection is in Pandas.
 
+### Foundit, Hyderabad block (jobs 256 to 264)
+
+- Foundit Hyderabad block done, 9 rows (planned 10). Title mix by actual title: Data Analyst 4 (256 to 259), Business Analyst 2 (260, 261), Operations 1 (262), Associate 1 (263), Intern 1 (264), MIS 0. No on-target MIS Executive postings were found; shortfall accepted.
+- Foundit salary is Not disclosed on all 9 rows (0 of 20 Foundit rows so far).
+- Foundit drops question marks from descriptions (jobs 260 and 261: "...across the globe What would you do"). Job 260's first paragraph is cut off at "MO", has the literal word "null" before the company line, and repeats "Key job responsibilities".
+- New posted_ago formats: "Posted 29 days ago", "Posted 16 days ago", "Posted 17 hours ago", next to "Posted a month ago" and "Posted 2 months ago". The month buckets are coarse; parse them as approximate ages in Phase 3.
+- Foundit masks emails in descriptions as "[Confidential Information]" (jobs 255, 263); kept as shown.
+- Job 256 (Unison Group New Zealand): headline "Data Analyst/Business Analyst" (two titles), 7 to 9+ years, SAP and non-SAP data analysis with Azure and Databricks; sentences run together where line breaks were lost; typo "adhereing". Senior, on-target.
+- Job 257 (Persistent Systems): 5+ years, Power BI and Snowflake; posted 2 months ago.
+- Job 258 (Google India): "Data Analyst, Risk", Trust & Safety fraud and abuse analysis, 2 years minimum; "About the jobTrust & Safety" glued.
+- Job 259 (vidaXL): 3+ years; description says semi hybrid, 4 days in office, while work_mode_portal is Not mentioned. Probable cross-portal duplicate of LinkedIn job 123 (confirm in Pandas).
+- Job 260 (Amazon Alliance): "Business Analyst II, Account Integrity", 5+ years, Tableau, Excel and SQL; company line says "ADCI - Karnataka - A66" while the city field says Hyderabad.
+- Job 261 (Swiss Re): "Technical Business Analyst I", portal Fresher, description asks 2 to 3 years of hands-on business and data analysis; entry-level title with an experience requirement (Question 4). QA, UAT and requirements-heavy; borderline. Ends with "#corso", an empty "Keywords:" line and a reference code. Industry shows "Consulting/Advisory Services".
+- Job 262 (NextPower Capital): "Sales Operations Analyst", quoting tools and CPQ configuration, not data analysis; borderline for Question 5, same kind as jobs 213 and 223. Experience is alternative ("Bachelor's with 5 years or Master's with 3 years or PhD without experience"), so the experience parser needs a rule. Company shown as "NextPower Capital", description says "Nextpower".
+- Job 263 (TriNet): "Associate Data Analyst", portal 2-4 years but description "Typically < 2 years"; cross-portal duplicate of Indeed job 205; 100% in office text.
+- Job 264 (WORK ASSIST): data analyst internship on a recruitment platform, "a requirement for one of the Workassist Hiring Partner" (employer unnamed), remote; city Hyderabad is the search location. Description starts with a pasted header block (Work Level, Industry Type: IT Services & Consulting, Function, Key Skills, Education) that disagrees with the portal's industry "Other". Skill tags repeat themselves (Bigdata and Big Data Platforms; BI and Business Intelligence) and miss SQL, which the description requires. Ends with a bit.ly link and a trailing blank line.
+- Experience in this block (description): 264 (students or recent graduates) is entry-level; 263 (< 2) and 258 (2) are low; 261 asks 2 to 3 against portal Fresher; 259 asks 3+; 262 asks 3 or 5; 257 and 260 ask 5+; 256 asks 7 to 9+.
+- Duplicate check on all Foundit rows (job ID at the end of the URL): 0 duplicate pairs among 20 rows.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
@@ -388,6 +407,7 @@
 - Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
 - Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
 - Reposts within Indeed: jobs 211 and 238 (AlphaSense Business Analyst II, Pune and Delhi).
+- Cross-portal: Indeed job 205 and Foundit job 263 (TriNet, Associate Data Analyst, Hyderabad). Probable: LinkedIn job 123 and Foundit job 259 (vidaXL, Data Analyst, Hyderabad); confirm in Pandas.
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -416,3 +436,4 @@
 - No on-target Operations Analyst postings were found on Indeed in Hyderabad or Mumbai, and the ones found elsewhere are Revenue or Product Operations roles (jobs 192, 213, 223).
 - Indeed Delhi/NCR rows come from three separate location searches (Delhi, Noida, Gurugram), typed inconsistently, and two URLs have no radius setting.
 - Indeed Business Analyst rows are 12 of 59 and mostly software requirements, reconciliation or MIS-type work; classic data-heavy Business Analyst postings are rare on Indeed.
+- Foundit shows no salary on any of the first 20 rows, so it adds nothing to Question 3. Foundit Operations Analyst and MIS Executive postings are thin (job 253 is off-target, job 262 is sales operations, and the Hyderabad MIS search returned none).
