@@ -354,6 +354,7 @@
 - Foundit "Key Skills" block includes profile-dependent text ("4 out of 26 preferred skills are a match", "Remove" labels, "You can add or edit skills in profile page"). Only the tag names are copied to skills_portal.
 - Foundit skill tags are copied with a browser console command that finds the "Key Skills" heading and joins the tag text with commas. It skips the profile-dependent lines ("x out of N preferred skills are a match", "Remove", "You can add or edit skills in profile page" and its link text). Tag count is checked against N on the first 3 postings, then spot-checked.
 - Foundit applicants field reads "Be among the first 40 applicants", a threshold, not a count; treat as unusable in Phase 3.
+- Duplicate check on Foundit rows (numeric job ID at the end of the URL, helper column =MID(L,FIND("&",L&"&")-8,10) plus COUNTIF; assumes an 8-digit ID and no query string, checked with a length and number test): 0 duplicate pairs among 11 rows (jobs 245 to 255). Cross-portal duplicates are handled in Phase 3.
 
 ### Foundit, Bengaluru block (jobs 245 to 255)
 
