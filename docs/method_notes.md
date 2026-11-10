@@ -363,7 +363,7 @@
 - Foundit applicants formats: "Be among the first N applicants", "Over N applicants have applied" (N = 10 to 500). Thresholds, not counts; unusable except as buckets.
 - Foundit company names appear in lowercase on some rows (merck group, refyne india, beyond appliances, prosessed). Job 249 and 250 company is shown as "Amazon Alliance" while the descriptions name ASSPL and ADCI.
 - Foundit skills_portal tags: casing varies (Sql, Bi Tools, make, google sheets); "Quicksight" and "Quick Sight" both appear. Job 249 has tags with commas inside them ("data visualization tools (e.g., capacity modeling, SQL)"), so skills_portal cannot be split on commas in Phase 3 without care. The tag "make" (job 252) collides with the common word when extracting from text. Job 254 tags (web scraping, CSS selectors, R) are listed although the description says they are "not mandatory".
-- industry_type on Foundit: Other on all rows.
+- industry_type on Foundit shows "Other" on most rows and a real value on some (job 261: Consulting/Advisory Services); mostly uninformative.
 - Job 245 (Eurofins): headline "Data Analyst", description title "Power BI Developer", 4+ years, Power BI/DAX/SQL Server plus Python and .NET development; borderline. Long company boilerplate; names an individual (strip before publishing); "Job Description" appears twice.
 - Job 246 (merck group): headline "Data Analyst", but the work is Snowflake/dbt data engineering, 5+ years; off-target, exclude candidate. "Who You Are" holds the duties and "Your Role" the requirements; two requirement bullets repeat.
 - Job 247 (refyne india): "Data Analyst – Finance", MIS reporting, 3 to 5 years (en dash).
