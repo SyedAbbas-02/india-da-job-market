@@ -4,8 +4,8 @@
 
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
-- Indeed in progress: Bengaluru (jobs 185 to 196, 12 rows), Hyderabad (197 to 206, 10), Pune (207 to 216, 10), Chennai (217 to 225, 9) and Mumbai (226 to 233, 8) done; 51 Indeed rows with the 2 pilot rows, target 60. Next: Indeed Delhi/NCR from job 234 (9 rows), then Foundit (target 60).
-- Update this section each time a portal closes.
+- Indeed closed at 61 rows (including 2 pilot rows), target 60: Bengaluru 12 (jobs 185 to 196), Hyderabad 10 (197 to 206), Pune 10 (207 to 216), Chennai 9 (217 to 225), Mumbai 8 (226 to 233), Delhi/NCR 10 (234 to 243). Sheet total after Indeed: about 240 rows (Naukri 99, LinkedIn 80, Indeed 61).
+- Next: Foundit (target 60), numbering continues from job 244.
 
 ## Collection rules
 
@@ -312,15 +312,24 @@
 - Dash and bullet formats vary (en dash 3–5 and 1–3, hyphen 1-3, em dash, inline "•"); the experience parser needs all of them.
 - Duplicate check on all Indeed rows (jk/vjk value, 43 rows including the 2 pilot rows): 0 duplicate pairs.
 
-### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
+### Indeed, Delhi/NCR block (jobs 234 to 243)
 
-- Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
-- Reposts within LinkedIn: jobs 118 and 159 (Portcast), 145 and 155 (Citi)
-- Cross-portal: Naukri job 77 and LinkedIn job 141 (Zema Global); Naukri job 82 and LinkedIn job 170 (Havas Media / PivotRoots)
-- Job 79 (MitKat) was checked against 30 and 33 and is not a repost.
-- Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
-- Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
-- Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
+- Indeed Delhi/NCR block done, 10 rows (planned 9); Indeed closes at 61 rows. Title mix by actual title: Data Analyst 3 (234 to 236), Business Analyst 4 (237 to 240), MIS 1 (241), Junior or Fresher 2 (242, 243), Operations 0. City mix: Delhi 4 (234, 238, 240, 241), Noida 3 (235, 239, 243), Gurugram 3 (236, 237, 242).
+- Searches: "data analyst" (234 to 236, in Delhi, Noida and Gurugram), "business analyst" (237 to 239, 238 from page 2), "mis executive" (240 in Delhi, 241 in Gurugram), "associate data analyst" (242, Gurugram); job 243's search was not visible in the paste. Location strings were typed "Delhi, Delhi", "noida", "Gurugram, Haryana", "delhi", "gurugram"; jobs 234 and 240 have no radius in the URL.
+- Emails: job 237 had an unremoved email and job 238 had the domain "@alpha-sense.com" (job 211 has [removed]); both replaced after review. Earlier, job 231 also had a missed second email. A full-sheet scan for "@" and long digit strings was run after Indeed closed: replaced all mails with [removed].
+- Job 238 (AlphaSense) is the same posting as Pune job 211 (same title and description, different city and job key); repost within Indeed, collapse in Phase 3.
+- Job 234 (WinZO): headline "Data Analyst", description is senior (dbt, Airflow pipelines, A/B-testing platforms, "lead end-to-end projects", "mentor junior analysts"), no years stated; very long company and values boilerplate and a "Download our app" line with joined URLs; non-breaking hyphens throughout; borderline.
+- Job 235 (RightWave): 3+ years, B.Tech, BCA, MCA or MTech required; a stuffed "Key Skills" block (PowerBI, My SQL, Google Analytics, DiscoverOrg/ZoomInfo) next to "Key Attributes", so skill extraction will overcount.
+- Job 236 (HS Oberoi): company field "HS Oberoi Buildtech Pvt Ltd", text says "H.S. Oberoi Spirits Company"; 2 to 3 years, sales MIS reporting; ₹30,000 - ₹35,000 a month.
+- Job 237 (Paramount Energy Solution): Business Analyst for project reporting and MIS in EPC firms, MBA required, 1 to 3 years, "From ₹4,19,000 a year" (same minimum as job 202, possible platform default or estimate; check as a suspect value); ✅ and ✔ symbols in the text.
+- Job 239 (vensysco technologies): software Business Analyst (BRD, FRD, SRS), 2 to 3 years, ₹3,60,000 - ₹6,00,000 a year; experience stated in three places; "Work Location" appears twice; borderline.
+- Job 240 (Delhi Press): "Business Analyst (MIS & Reporting)" for magazine circulation and sales reporting, 1 to 3 years; city field is "Delhi"; email replaced with [removed]; description starts with "Careers".
+- Job 241 (D Succeed Learners): MIS Executive, generic template ("Reports To: MIS Manager / Operations Manager / IT Head"), 2 to 4 years, ₹25,000 - ₹35,000 a month; city "Janakpuri, Delhi, Delhi" although found in the Gurugram search; cell ends with a blank line.
+- Job 242 (OcIT): "Data Analyst - Freshers" with portal experience Fresher, but the description asks for insurance reporting experience, "strong experience in Power BI development", the ability to lead a team and CI/CD tools; entry-level label with senior requirements (Question 4).
+- Job 243 (Rezo.ai.): "Junior Data Analyst", Zoho-style "Job Information" table ("Date Opened 27/10/2026", "Work Experience 0-1 year", Postal Code 201301); the day is 27, so this template uses day/month/year; company shown as "Rezo.ai." with a trailing full stop. The paste for this row was cut off in the description; <the cell was complete / was re-copied>.
+- Experience in this block (description): 243 (0 to 1) is junior; 242 is labelled Fresher but senior in content; 237 and 240 ask 1 to 3, 236 and 239 ask 2 to 3, 241 asks 2 to 4, 235 and 238 ask 3+; 234 states no years.
+- Salary shown on 4 of 9 fully visible rows (236, 237, 239, 241).
+- Duplicate check on all Indeed rows (jk/vjk value, 61 rows including the 2 pilot rows): 0 duplicate pairs by key; one repost by description (jobs 211 and 238).
 
 ### Indeed, Mumbai block (jobs 226 to 233)
 
@@ -338,6 +347,17 @@
 - Salary shown on 4 of 8 rows (227, 228, 231, 233); job 233 excluded with the trainer role.
 - Experience in this block (description): 227 (0 to 6 months) is entry-level; 230 asks 2 to 4, 232 asks 2+, 226 asks 3 to 6, 228 asks 3 to 5, 229 asks 5+, 231 asks 8 to 10, 233 asks 5 to 6.
 - Duplicate check on all Indeed rows (jk/vjk value, 51 rows including the 2 pilot rows): 0 duplicate pairs.
+
+### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
+
+- Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
+- Reposts within LinkedIn: jobs 118 and 159 (Portcast), 145 and 155 (Citi)
+- Cross-portal: Naukri job 77 and LinkedIn job 141 (Zema Global); Naukri job 82 and LinkedIn job 170 (Havas Media / PivotRoots)
+- Job 79 (MitKat) was checked against 30 and 33 and is not a repost.
+- Add Indeed and Foundit matches after those blocks close. Detection is done in Pandas (company, title, description), not in Excel.
+- Indeed Bengaluru block (jobs 185 to 196): no reposts or cross-portal matches spotted by eye; real detection is done in Pandas (company, title, description).
+- Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
+- Reposts within Indeed: jobs 211 and 238 (AlphaSense Business Analyst II, Pune and Delhi).
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -364,3 +384,5 @@
 - The Indeed "operations analyst" search mostly returns Revenue Operations or Product Operations roles, so the Operations group on Indeed is not classic operations analyst work.
 - Indeed Business Analyst rows are mostly software requirements or reconciliation work (jobs 189, 198, 202, 220, 229), and Mumbai returned only one on-target Business Analyst posting; the Business Analyst group on Indeed is thin and not data-heavy.
 - No on-target Operations Analyst postings were found on Indeed in Hyderabad or Mumbai, and the ones found elsewhere are Revenue or Product Operations roles (jobs 192, 213, 223).
+- Indeed Delhi/NCR rows come from three separate location searches (Delhi, Noida, Gurugram), typed inconsistently, and two URLs have no radius setting.
+- Indeed Business Analyst rows are 12 of 59 and mostly software requirements, reconciliation or MIS-type work; classic data-heavy Business Analyst postings are rare on Indeed.
