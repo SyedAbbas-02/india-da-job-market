@@ -6,7 +6,7 @@
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
 - Indeed closed at 62 rows (including 2 pilot rows), target 60: Bengaluru 12 (jobs 185 to 196), Hyderabad 10 (197 to 206), Pune 10 (207 to 216), Chennai 9 (217 to 225), Mumbai 8 (226 to 233), Delhi/NCR 11 (234 to 244). Sheet total after Indeed: 241 rows (Naukri 99, LinkedIn 80, Indeed 62).
 - Foundit closed at 59 rows (target 60): Bengaluru 11, Hyderabad 9, Pune 9, Chennai 10, Mumbai 10, Delhi/NCR 10. Sheet total 300 (Naukri 99, LinkedIn 80, Indeed 62, Foundit 59). Phase 2 collection closed.
-- Job_id gaps: 47, 50, 65 (exact duplicates deleted), 244 (unused). Job_ids 1 to 303 minus these 4 gaps = 299 rows.
+- Job_id gaps: 47, 50, 65 (exact duplicates deleted). Job_ids 1 to 303 minus these 3 gaps = 300 rows.
 
 ## Collection rules
 
@@ -14,7 +14,7 @@
 - Experience, skills and education are extracted from description text in Phase 3, same rules for all sources
 - Missing values use: Not mentioned / Not disclosed / No tags / Confidential. Never blank, never NA or 0
 - Phone numbers and emails in descriptions are replaced with [removed]; the rest of the text is unchanged
-- Foundit masks contact details itself as "[Confidential Information]" (jobs 255, 263). Kept as shown; treated the same as [removed] in Phase 3.
+- Foundit masks contact details itself as "[Confidential Information]" (jobs 255, 263, 267, 301). Kept as shown; treated the same as [removed] in Phase 3.
 - No scraping. All postings are collected by hand
 - No date, salary or experience filters. A city filter is allowed (deviations are listed under Limitations)
 - Log titles as the posting shows them; job_title holds the headline
@@ -318,7 +318,7 @@
 
 - Indeed Mumbai block done, 8 rows (planned 9). Title mix by actual title: Data Analyst 3 (226 to 228), Business Analyst 1 (229), MIS 2 (230, 231), Associate 1 (232), Trainer 1 (233). No Operations Analyst, Intern, Junior or Fresher titles.
 - Searches: "data analyst" page 1 (226 to 228), "business analyst" page 3 (229; only one on-target Business Analyst found), "mis executive" pages 1 and 2 (230, 231), "associate data analyst" (232), "data analyst intern" page 4 (233; no intern titles found), "operations analyst" (no on-target postings found). Location Mumbai, Maharashtra, radius 25.
-- MIS cap of 1 per city was broken again (2 MIS rows); MIS rows were then 9 of the 49 non-pilot Indeed rows (jobs 193, 194, 195, 204, 214, 222, 225, 230, 231). After Delhi/NCR: 10 of 59.
+- MIS cap of 1 per city was broken again (2 MIS rows); MIS rows were then 9 of the 49 non-pilot Indeed rows (jobs 193, 194, 195, 204, 214, 222, 225, 230, 231). After Delhi/NCR: 10 of 60.
 - Job 233 (Gigatorb): Data Science & Data Analytics Trainer in Thane, 5 to 6 years, "Full-Time / Part-Time / Contract / Freelance", ₹40,000 - ₹60,000 a month; teaching role found on the intern search; off-target (same as pilot job 10), exclude candidate. City field is Naupada, Thane, not Mumbai.
 - Job 231 (Moksha Retails Global): headline "Senior MIS Analyst", description "MIS & Business Analyst", 8 to 10 years, strong BI and AI knowledge, 6 days a week, ₹50,000 - ₹60,000 a month; email appeared twice and the second one was missed at first (replaced with [removed] afterwards); headings glued together ("Key ResponsibilitiesMIS and reporting"); company shown as "Moksha Retails Global Pvt Ltd", text says Unione Group and Moksha Enterprises.
 - Job 226 (Sia): headline "Data Analyst", description "Power BI Developer", 3 to 6 years, mandatory PL-300, internal Finance and HR reporting; city field is a street address (Supreme Business Park, Hiranandani Gardens).
@@ -333,7 +333,7 @@
 
 ### Indeed, Delhi/NCR block (jobs 234 to 243)
 
-- Indeed Delhi/NCR block done, 11 rows (planned 9); Indeed closes at 62 rows. Title mix by actual title: Data Analyst 3 (234 to 236), Business Analyst 4 (237 to 240), MIS 1 (241), Junior or Fresher 2 (242, 243), Operations 0. City mix: Delhi 4 (234, 238, 240, 241), Noida 3 (235, 239, 243), Gurugram 4 (236, 237, 242, 243).
+- Indeed Delhi/NCR block done, 11 rows (planned 9); Indeed closes at 62 rows. Title mix by actual title: Data Analyst 3 (234 to 236), Business Analyst 4 (237 to 240), MIS 1 (241), Junior or Fresher 2 (242, 243), Operations 0. City mix: Delhi 4 (234, 238, 240, 241), Noida 3 (235, 239, 243), Gurugram 4 (236, 237, 242, 244).
 - Searches: "data analyst" (234 to 236, in Delhi, Noida and Gurugram), "business analyst" (237 to 239, 238 from page 2), "mis executive" (240 in Delhi, 241 in Gurugram), "associate data analyst" (242, Gurugram); job 243's search was not visible in the paste. Location strings were typed "Delhi, Delhi", "noida", "Gurugram, Haryana", "delhi", "gurugram"; jobs 234 and 240 have no radius in the URL.
 - Emails: job 237 had an unremoved email and job 238 had the domain "@alpha-sense.com" (job 211 has [removed]); both replaced after review. Earlier, job 231 also had a missed second email. A full-sheet scan for "@" and long digit strings was run after Indeed closed: replaced all mails with [removed].
 - Job 238 (AlphaSense) is the same posting as Pune job 211 (same title and description, different city and job key); repost within Indeed, collapse in Phase 3.
@@ -361,7 +361,7 @@
 
 ### Foundit, Bengaluru block (jobs 245 to 255)
 
-- Foundit Bengaluru block done, 11 rows (planned 10). Title mix by actual title: Data Analyst 4 (245 to 248), Business Analyst 3 (249 to 251), Associate 1 (254), Intern 1 (255), MIS 1 (252), Operations 1 (253). Job 244 is unused because numbering started at 245.
+- Foundit Bengaluru block done, 11 rows (planned 10). Title mix by actual title: Data Analyst 4 (245 to 248), Business Analyst 3 (249 to 251), Associate 1 (254), Intern 1 (255), MIS 1 (252), Operations 1 (253). Job 244 is the Indeed row logged under Indeed Delhi/NCR; Foundit numbering started at 245.
 - Foundit salary is Not disclosed on all 11 rows. Foundit shows posted_ago on every row (values: hours, days, "a month ago", "2 months ago"), so posting age can be filtered in Phase 3. Job IDs of the older rows (252, 254, 255) are much lower than recent ones; do not derive dates from Foundit IDs.
 - Foundit applicants formats: "Be among the first N applicants", "Over N applicants have applied" (N = 10 to 500). Thresholds, not counts; unusable except as buckets.
 - Foundit company names appear in lowercase on some rows (merck group, refyne india, beyond appliances, prosessed). Job 249 and 250 company is shown as "Amazon Alliance" while the descriptions name ASSPL and ADCI.
@@ -487,7 +487,7 @@
 - Reposts within Indeed: jobs 211 and 238 (AlphaSense Business Analyst II, Pune and Delhi).
 - Cross-portal: Indeed job 205 and Foundit job 263 (TriNet, Associate Data Analyst, Hyderabad). Probable: LinkedIn job 123 and Foundit job 259 (vidaXL, Data Analyst, Hyderabad); confirm in Pandas.
 - Probable cross-portal: Naukri job 82, LinkedIn job 170 and Foundit job 293 (Havas / PivotRoots, Associate Data Analyst, Mumbai; same "0-2 years... experienced candidates preferred" text and equal-opportunity paragraph twice); confirm in Pandas. Check whether LinkedIn job 166 and Foundit job 291 (Media.net) are the same posting.
--Probable cross-portal: LinkedIn job 176 and Foundit job 303 (Fidelity International, Associate Data Analyst, Gurugram); confirm in Pandas.
+- Probable cross-portal: LinkedIn job 176 and Foundit job 303 (Fidelity International, Associate Data Analyst, Gurugram); confirm in Pandas.
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -514,6 +514,6 @@
 - No on-target Operations Analyst postings were found on Indeed in Hyderabad, Mumbai or Delhi/NCR, and the ones found elsewhere are Revenue or Product Operations roles (jobs 192, 213, 223).
 - Indeed Delhi/NCR rows come from three separate location searches (Delhi, Noida, Gurugram), typed inconsistently, and two URLs have no radius setting.
 - Foundit Operations Analyst and MIS Executive postings are thin: no on-target MIS Executive postings were found on Foundit in Hyderabad and Chennai.
-- Foundit has almost no salary data (1 of 59 rows, and that one is a training-institute internship ad) and skews senior: 22 of 24 Data Analyst-titled Foundit rows have a portal minimum of 2 years or more he exceptions (jobs 277 and 297) say Fresher in the portal; the exception (job 277) says Fresher in the portal but asks for proven experience in the description. Foundit's Operations group is mostly not classic operations analyst work (jobs 253, 262, 271, 281, 282); job 291 is the exception.
+- Foundit has almost no salary data (1 of 59 rows, and that one is a training-institute internship ad) and skews senior: 22 of 24 Data Analyst-titled Foundit rows have a portal minimum of 2 years or more; the exceptions (jobs 277 and 297) say Fresher in the portal, and job 277 asks for proven experience in the description. Foundit's Operations group is mostly not classic operations analyst work (jobs 253, 262, 271, 281, 282); job 291 is the exception.
 - The Fresher label is unreliable: Foundit jobs 251, 261, 277, 282 and 292 say Fresher in the portal but ask for experience in the description; Indeed job 242 is labelled Fresher but asks for senior skills (Power BI development, team lead); Foundit jobs 298 and 303 say Fresher in the portal but ask for 8 to 10 and 2 to 5 years.
 - Search terms and result pages were not recorded for the Foundit blocks; title groups were sampled by searching each title, so they compare skills, not market share.
