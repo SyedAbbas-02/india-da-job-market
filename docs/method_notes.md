@@ -5,7 +5,7 @@
 - Naukri closed at 99 rows (including 4 pilot rows), target 100.
 - LinkedIn closed at 80 rows (including 4 pilot rows), target 80.
 - Indeed closed at 61 rows (including 2 pilot rows), target 60: Bengaluru 12 (jobs 185 to 196), Hyderabad 10 (197 to 206), Pune 10 (207 to 216), Chennai 9 (217 to 225), Mumbai 8 (226 to 233), Delhi/NCR 10 (234 to 243). Sheet total after Indeed: about 240 rows (Naukri 99, LinkedIn 80, Indeed 61).
-- Foundit Chennai closed at 10 rows (jobs 274 to 283). Foundit total 39 rows (jobs 245 to 283). Sheet total about 279 (Naukri 99, LinkedIn 80, Indeed 61, Foundit 39). Next: Foundit Mumbai from job 284.
+- Foundit Mumbai closed at 10 rows (jobs 284 to 293). Foundit total 49 rows (jobs 245 to 293). Sheet total about 289 (Naukri 99, LinkedIn 80, Indeed 61, Foundit 49). Next: Foundit Delhi/NCR from job 294.
 
 ## Collection rules
 
@@ -436,6 +436,24 @@
 - No MIS Executive row was collected in Chennai.
 - Duplicate check on all Foundit rows (job ID at the end of the URL): 0 duplicate pairs among 39 rows. No cross-portal matches spotted by eye; detection is in Pandas.
 
+### Foundit, Mumbai block (jobs 284 to 293)
+
+- Foundit Mumbai block done, 10 rows (planned 10), all with city Mumbai. Title mix by actual title: Data Analyst 4 (284 to 287; 286 "Data Analyst-I" also counts as entry-level by the level marker), Business Analyst 3 (288 to 290), Operations 1 (291), MIS 1 (292), Associate 1 (293). Entry-level by title: 2 (286, 293).
+- Foundit salary is Not disclosed on all 10 rows (1 of 49 Foundit rows so far).
+- industry_type: job 287 shows "Insurance", job 292 shows "Banking/Accounting/Financial Services", job 293 shows Not mentioned (no industry on the page).
+- Job 284 (The Sleep Company): clean D2C Data Analyst row, 3 to 5 years, SQL with joins, CTEs and window functions.
+- Job 285 (FedEx): headline "Senior Data Analyst (Revenue Analytics)", description title "Senior Analyst – Pricing and Marketing Analytics"; pricing analytics with predictive models; 6 to 10 years in the portal, "6–8+ years" in the description.
+- Job 286 (etraveli group): "Data Analyst-I" (no space before the hyphen), portal and description both 3 to 5 years; entry-level title by the "I" marker with an experience requirement (Question 4). Customer Services KPI reporting with Qlik Sense.
+- Job 287 (Marsh): headline "Senior Data Analyst - Python", description title "Senior Principal Engineer - Digital Visualization & Data Analytics Development"; portal 6-8 years, description "6- 7 years"; insurance or finance domain; posted 2 months ago.
+- Job 288 (Bnp Paribas Bank): "Assistant Manager Business Analyst Calypso IT", back-office settlement of bonds and repos, Level 3 support, UAT, 7+ years, SQL at intermediate level; no data analysis, borderline. The closing paragraph repeats.
+- Job 289 (Priceline): product Business Analyst, SQL, Hadoop and Tableau, 3 to 5 years; the description requires a Master's degree in Mathematics or Statistics (education gate); long benefits boilerplate.
+- Job 290 (Mcaffeine): Business Analyst for a D2C brand (company overview says PEP), 2 to 5 years; the degree must be from a "Tier 1 Institute" (education gate).
+- Job 291 (MediaNet): "Operations Analyst", ad tech reporting with Excel (VLOOKUP, pivot tables) and PowerPoint, portal Fresher, no years stated; first Foundit Operations row that is mostly data reporting. Names the founder; the text is double-spaced; company shown as "MediaNet", description says "Media.net". Check against LinkedIn job 166 (Media.net) in Pandas.
+- Job 292 (Kotak Securities): title has code fields ("MIS Executive_HOUSING FINANCE_0773_1459_1041182"); portal Fresher but the description asks for 3+ years and mandatory financial services experience; encoding glitch ("â€"); sentences run together; "AVS" listed as a skill without explanation.
+- Job 293 (Havas group): "Associate Data Analyst - CSA", agency PivotRoots, performance marketing analytics, portal Fresher, description "0-2 years... experienced candidates preferred"; the equal-opportunity paragraph appears twice. Probable third copy of Naukri job 82 and LinkedIn job 170 (confirm in Pandas).
+- Experience in this block (description): 291 (no years) and 293 (0 to 2) are entry-level; 292 asks 3+ against portal Fresher; 290 asks 2 to 5; 284, 286, 289 ask 3 to 5; 285 asks 6 to 8+; 287 asks 6 to 7; 288 asks 7+.
+- Duplicate check on all Foundit rows (job ID at the end of the URL): 0 duplicate pairs among 49 rows.
+
 ### Known reposts and cross-portal duplicates (for Phase 3 dedupe)
 
 - Reposts within Naukri: jobs 1 and 4 (pilot), 30 and 33 (MitKat), 59 and 72 (LeadWinner), 64 and 86 (Securens)
@@ -447,6 +465,7 @@
 - Indeed Pune block (jobs 207 to 216): none spotted by eye. Job 208 is a staffing-agency posting and may reappear under another company name; real detection is in Pandas.
 - Reposts within Indeed: jobs 211 and 238 (AlphaSense Business Analyst II, Pune and Delhi).
 - Cross-portal: Indeed job 205 and Foundit job 263 (TriNet, Associate Data Analyst, Hyderabad). Probable: LinkedIn job 123 and Foundit job 259 (vidaXL, Data Analyst, Hyderabad); confirm in Pandas.
+- Probable cross-portal: Naukri job 82, LinkedIn job 170 and Foundit job 293 (Havas / PivotRoots, Associate Data Analyst, Mumbai; same "0-2 years... experienced candidates preferred" text and equal-opportunity paragraph twice); confirm in Pandas. Check whether LinkedIn job 166 and Foundit job 291 (Media.net) are the same posting.
 
 ### Limitations (for the Phase 6 write-up)
 
@@ -476,5 +495,6 @@
 - Indeed Delhi/NCR rows come from three separate location searches (Delhi, Noida, Gurugram), typed inconsistently, and two URLs have no radius setting.
 - Indeed Business Analyst rows are 12 of 59 and mostly software requirements, reconciliation or MIS-type work; classic data-heavy Business Analyst postings are rare on Indeed.
 - Foundit shows no salary on any of the first 20 rows, so it adds nothing to Question 3. Foundit Operations Analyst and MIS Executive postings are thin (job 253 is off-target, job 262 is sales operations, and the Hyderabad MIS search returned none).
-- Foundit has almost no salary data (1 of 39 rows, and that one is a training-institute internship ad) and skews senior: 15 of 16 Data Analyst-titled Foundit rows have a portal minimum of 2 years or more; the exception (job 277) says Fresher in the portal but asks for proven experience in the description. Foundit's Operations group is not classic operations analyst work.
+- Foundit has almost no salary data (1 of 49 rows, and that one is a training-institute internship ad) and skews senior: 19 of 20 Data Analyst-titled Foundit rows have a portal minimum of 2 years or more; the exception (job 277) says Fresher in the portal but asks for proven experience in the description. Foundit's Operations group is mostly not classic operations analyst work (jobs 253, 262, 271, 281, 282); job 291 is the exception.
+- Foundit's Fresher label is unreliable: jobs 251, 261, 277, 282 and 292 say Fresher in the portal but ask for experience in the description.
 - Search terms and result pages were not recorded for the Foundit blocks; title groups were sampled by searching each title, so they compare skills, not market share.
