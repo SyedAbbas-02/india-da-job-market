@@ -3,4 +3,4 @@ __pycache__/
 .env
 *.pbix.bak
 ~$*
-data_raw/*.xlsx
+data_raw/
