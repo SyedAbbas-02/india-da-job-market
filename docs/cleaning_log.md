@@ -153,3 +153,14 @@
 - Caveat: portal ranges starting at 0 count as a minimum of 0, so the fallback inflates the fresher band. It is a sensitivity check only.
 - Description vs portal, analysis set: both values present for 69 rows (Foundit 41, Naukri 25, Indeed 3; LinkedIn has no portal experience field). exp_conflict_flag (minimums differ by 1+ year): 13 rows (Naukri 8 of 25, Foundit 5 of 41, Indeed 0 of 3). Description minimum above the portal maximum (desc_min_above_portal_max): 2 rows.
 - Job 2 text lost a dash ("Suggested range: 14 years"): exp_min null, flagged (exp_lost_dash, with 100, 58 and 61).
+
+## Step 10: entry-level title flag (2026-11-13)
+
+- Rule from questions.md. entry_title_words: Fresher, Junior or Jr, Trainee, Intern in the title. entry_title_assoc: Associate. entry_title_level: a level marker (I or 1 after Analyst, Executive, Associate or Engineer, or at the end of the title; "II" does not match). Titles matched after replacing underscores with spaces and en dashes with hyphens.
+- Bug caught: underscores hid "Fresher" in jobs 38 and 39 (word boundaries treat "_" as a letter). Fixed; the analysis-set count went from 49 to 51.
+- Analysis set (246): 51 entry-level by any rule; 33 without Associate; 18 Associate-only. 13 of the 51 are flagged internships; without Associate and without internships: 20 rows.
+- Mixed titles that also invite experienced candidates: jobs 32 and 96 (entry_title_mixed).
+- Decisions: job 188 "(0 - 1 Year)" is not entry-level by the title rule (no level word); job 210 "Data Analyst-2+year" is not; jobs 38 and 39 are.
+- Associate-only rows include roles asking 3 to 5+ years (for example 117, 126, 163, 232), so Q4 is reported with and without Associate.
+- Data available for Q4 (description exp known / portal min known / both / neither): any rule 28 / 27 / 13 / 9 of 51; without Associate 15 / 19 / 8 / 7 of 33; without Associate and internships 11 / 15 / 7 / 1 of 20.
+- Interns rarely state years, so the internship-free cut is the meaningful base for "still ask for 1+ years". Q4 is reported as counts ("k of N"), not headline percentages.
