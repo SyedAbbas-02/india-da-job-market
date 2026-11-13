@@ -126,3 +126,22 @@
 - Cutoff decision: is_old = age of 60 days or more (45 days gave 59 rows, 60 gave 58; 30 days would include the coarse "1 month ago" bucket). Old rows are flagged, not removed.
 - Results: 58 of 238 known-age rows are old (Naukri 37, LinkedIn 14, Foundit 7). In the analysis set: 193 known age, 50 old (Naukri 31, LinkedIn 12, Foundit 7), 53 unknown (all Indeed), 16 reposted-label rows. Median age 12 days, max 1,578.
 - Any "share of old postings" figure excludes Indeed.
+
+## Step 9a: experience phrases (2026-11-13)
+
+- 184 of 300 rows contain a number-plus-years/months phrase in description_clean; 116 do not (Naukri 61, LinkedIn 23, Indeed 20, Foundit 12). Only 20 of those 116 use fresher or entry-level wording.
+- Consequence: description-based exp_min is null for about 40% of rows, most of them Naukri, where the range sits in the header field. Main experience measure stays description-only (as in questions.md); a separate sensitivity column falls back to the portal value and records its source.
+- Number-plus-years phrases that are not experience requirements and must be excluded: service bond and agreement terms, company history ("for over N years, we've scaled"), planning horizons, internship duration, and "Fresher (N years)" labels.
+- Parser rule: a phrase counts when "experience", "exp" or "work" is within about 40 characters, or it follows an "Experience:" label.
+
+## Step 9: experience from description (2026-11-13)
+
+- Parser reads: ranges with hyphen, en dash or "to"; "N+"; "minimum / at least / over N"; "up to / less than N" (min 0, max N); months divided by 12; "Experience: Fresher" label = 0. A phrase counts only when "experience" or "exp" is within about 40 characters. Units glued to the next word ("2yrsType") are handled.
+- Rejected on purpose (17 phrases, checked by eye): service bonds and agreements (61, 91, 93), company history (52, 120, 128, 131, 245), a planning horizon (249), internship durations (39, 142, 184, 215, 255). Job 208 was wrongly rejected and fixed by hand.
+- Manual overrides, 15 rows: 169 and 197 ("one year", spelled out), 100 (lost dash, 1-2), 61 (typo "24 years", 2-4), 208 (9-12), 7, 58 (lost dash, 0.5-1), 78, 231 (8-10, the 3-4 is a sub-skill), 245 (4+), 29, 140, 250, 261, 275 (requirements the nearby-word rule missed).
+- Rows where phrases disagree: 15 flagged (exp_phrases_disagree). Where unresolved, the phrase with the lowest minimum is used (80, 190, 221, 243, 253, 262, 267, 280); 243 contradicts itself (0-1 in the header table, 1-2 in the body).
+- Job 2: text says "Suggested range: 14 years" (lost dash); exp_min set to null, portal value 0-3 kept.
+- Jobs 21 (12+) and 153 (10-12) are genuine senior postings; job 21 conflicts with its portal value (0-5).
+- Result: exp_min filled for 178 of 300 rows (description 161, manual 15 less job 2, fresher label 3); 122 null. 20 of the null rows use fresher or entry-level wording only (flag exp_entry_wording).
+- Analysis set (246): 150 filled, 96 null. Filled by source: LinkedIn 45 of 65, Foundit 41 of 52, Indeed 38 of 53, Naukri 26 of 76. Naukri is thin because its range sits in the header field and recruiters rarely repeat it.
+- Main measure stays description-only (questions.md). A sensitivity column falls back to the portal value and records the source.
