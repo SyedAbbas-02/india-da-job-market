@@ -4,3 +4,4 @@ __pycache__/
 *.pbix.bak
 ~$*
 data_raw/
+data_clean/stage3_descriptions.csv
