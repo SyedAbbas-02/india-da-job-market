@@ -114,3 +114,15 @@
 - Remote postings keep the search city and carry is_remote.
 - Final counts, all 300 rows: Bengaluru 64, Delhi/NCR 49, Mumbai 47, Chennai 46, Hyderabad 45, Pune 45, Other 3, Unknown 1.
 - Analysis set (246): Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34, Other 1, Unknown 1. Cells by portal run from 7 to 21 rows (Bengaluru-Naukri 21). These follow collection quotas and say nothing about market size.
+
+## Step 8: posting age (2026-11-13)
+
+- Age is measured from date_collected (Naukri 3-6 Nov, LinkedIn 8 Nov, Indeed 9 Nov, Foundit 10-11 Nov; pilot rows 3 Nov).
+- posted_ago had 47 distinct phrasings; one parser read all of them (0 unreadable). Months approximated as 30 days ("a month ago" = 30, "2 months ago" = 60).
+- Naukri "3+ weeks ago" is open-ended (43 rows): age taken from the Naukri URL date (ddmmyy prefix of the URL ID; parsed 99 of 99, range July 2022 to 6 Nov 2026; checked against posted_ago on a sample).
+- Refreshed postings (label specific but URL date more than 30 days older): 2 rows, jobs 94 and 97; the label is used and the conflict flagged (refreshed_label_conflict). Jobs 49 and 58 from the collection notes were not caught by the 30-day test.
+- Age known for 238 rows (Naukri 99, LinkedIn 80, Foundit 59). Indeed (62 rows) has no posting date: age unknown, flagged.
+- 17 LinkedIn rows say "Reposted"; their age is the repost age, so the original posting is older (is_reposted_label).
+- Cutoff decision: is_old = age of 60 days or more (45 days gave 59 rows, 60 gave 58; 30 days would include the coarse "1 month ago" bucket). Old rows are flagged, not removed.
+- Results: 58 of 238 known-age rows are old (Naukri 37, LinkedIn 14, Foundit 7). In the analysis set: 193 known age, 50 old (Naukri 31, LinkedIn 12, Foundit 7), 53 unknown (all Indeed), 16 reposted-label rows. Median age 12 days, max 1,578.
+- Any "share of old postings" figure excludes Indeed.
