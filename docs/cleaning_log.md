@@ -173,3 +173,4 @@
 - Duplicates: no salary lost when collapsing; groups 1/4 and 14/49 carry different values, kept row used.
 - Outlier flags (kept in the data; Phase 4 reports medians with and without them): high_pay_10plus_lpa 27, 28, 99, 208, 244 (27 and 28 are staffing postings); high_for_fresher_title 89; minimum_below_1_lpa 48, 57, 58; possible_platform_estimate 202, 237 (identical Indeed minimum); very_wide_range 214. Not checked against the live postings.
 - Descriptive statistics are computed in Phase 4. Salary comparisons by city or skill are shown with counts and no claims of significance.
+- Flags set: salary_outlier, salary_usable (51 rows), salary_usable_clean (39 rows: Naukri 21, Indeed 15, LinkedIn 3; by city Bengaluru 11, Hyderabad 7, Chennai 7, Mumbai 5, Delhi/NCR 5, Pune 3, Other 1). Median midpoint 4.31 LPA with outliers (n=48), 4.06 without (n=38). Descriptive only; no significance claims.
