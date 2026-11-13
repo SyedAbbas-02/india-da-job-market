@@ -81,3 +81,20 @@
 
 - is_internship 15, is_remote 19, is_contract 4, has_bond_or_service_agreement 3, eligibility_restricted 11, is_staffing_or_aggregator 18, off_target 31, borderline 37, thin_description 20.
 - is_repost_or_dup: not set yet; next step.
+
+## Step 5a: duplicate detection (2026-11-13)
+
+- Pandas comparison of all 44,850 row pairs: description overlap (5-word shingles, Jaccard 0.5 or more) or same normalized company and title. 38 candidate pairs; all 15 pairs known from the collection notes were detected.
+- New pairs not in the notes: 43/56, 14/49, 150/274, 122/203, 125 (third TriNet copy with 205 and 263), 40/198, 95/242; 15/84 and 24/92 under review.
+- Not duplicates: MIS Executive template pairs 55/70/101/102 (different employers, same Naukri template); 34/35 (Syntrex) and 134/177 (EXL) have the same company and title but different text (overlap 0.03 and 0.0).
+- Job 79 (MitKat) overlaps jobs 30 and 33 at 0.96, although the collection notes called it not a repost; decision pending the text diff.
+
+## Step 5b: duplicates collapsed (2026-11-13)
+
+- Text diffs checked for the unclear pairs. Decisions: 15/84 same Creative Hands HR placeholder (15 flagged off_target and staffing like 84); 30/33/79 (MitKat) same posting in three cities, differing only by an apostrophe encoding, so job 79 IS a repost (the collection note "job 79 not a repost" is corrected); 36/125/205/263 (TriNet) one posting on four portals; 95/242 same posting under two company spellings; 166/291 (Media.net) identical text once spaces and punctuation are ignored; 24/92 not duplicates (shared template line only).
+- 20 duplicate groups, 24 rows flagged is_repost_or_dup (LinkedIn 9, Naukri 8, Indeed 5, Foundit 2). 276 unique postings remain.
+- Keep rule: the row with the most filled structured fields, lowest job_id on ties. The kept row stores all raw city strings (dup_raw_cities) and the portals it appeared on (dup_sources). Flagged rows are not deleted.
+- Confidence: exact for groups with near-identical text; probable for 64/86, 77/141, 82/170/293, 176/303 and 40/198 (overlap 0.5 to 0.8). Phase 4 reports key results with and without probable groups.
+- Not duplicates: MIS Executive template pairs 55/70/101/102, Syntrex 34/35, EXL 134/177.
+- Off-target is now 32 rows (31 from the notes + job 15); staffing 19.
+- Analysis set (not off_target and not duplicate): 246 of 300 rows. By source: Naukri 76, LinkedIn 65, Indeed 53, Foundit 52.
