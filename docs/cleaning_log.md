@@ -98,3 +98,19 @@
 - Not duplicates: MIS Executive template pairs 55/70/101/102, Syntrex 34/35, EXL 134/177.
 - Off-target is now 32 rows (31 from the notes + job 15); staffing 19.
 - Analysis set (not off_target and not duplicate): 246 of 300 rows. By source: Naukri 76, LinkedIn 65, Indeed 53, Foundit 52.
+
+## Step 6: off-target exclusion (2026-11-13)
+
+- Done in steps 4d and 5b: off_target is 32 rows (31 from the collection notes + job 15, the same placeholder as job 84). Excluded rows stay in the full table with a reason. The analysis set is not off_target and not is_repost_or_dup: 246 of 300 rows (Naukri 76, LinkedIn 65, Indeed 53, Foundit 52).
+
+## Step 7: city standardization (2026-11-13)
+
+- 83 raw city strings reduced to six metros (Bengaluru, Hyderabad, Pune, Chennai, Mumbai, Delhi/NCR) plus Other and Unknown. Mapping: Pimpri-Chinchwad to Pune; Navi Mumbai and Thane to Mumbai; Gurugram, Noida and Delhi to Delhi/NCR; Serilingampalli to Hyderabad.
+- search_city derived from the job_id block each posting was collected under (pilot rows 1-10 have none).
+- Primary-city rule, in order: (1) field names one metro: that metro (272 rows); (2) field names several metros: the search city (19 rows, flag multi_city_posting); (3) field names no metro: the search city (1 row, job 189 "Karnataka", flag city_field_no_metro); (4) field names one metro that differs from the search city: the field wins, flag city_differs_from_search (4 rows: 108, 141, 144, 146); (5) pilot rows decided by hand.
+- Manual decisions: jobs 1 and 4 (pilot, "Bengaluru, Hyderabad, Pune") set to Bengaluru, flag city_assumed (the pilot city filter was not recorded); job 8 ("India", no location in the text) Unknown; job 10 (Nagpur, off-target trainer) Other.
+- City field contradicts the description: jobs 43 and 56 (title and text say Ahmedabad; portal tags Hyderabad and Pune). Both set to Other, flag city_field_conflicts_description. Without this check they would have counted as a Hyderabad and a Pune opening.
+- Job 37 (Pimpri-Chinchwad, Hyderabad, Pune in the field; found in the Hyderabad search; company shown as "MNC") kept as Hyderabad under the multi-city rule.
+- Remote postings keep the search city and carry is_remote.
+- Final counts, all 300 rows: Bengaluru 64, Delhi/NCR 49, Mumbai 47, Chennai 46, Hyderabad 45, Pune 45, Other 3, Unknown 1.
+- Analysis set (246): Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34, Other 1, Unknown 1. Cells by portal run from 7 to 21 rows (Bengaluru-Naukri 21). These follow collection quotas and say nothing about market size.
