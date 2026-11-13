@@ -164,3 +164,12 @@
 - Associate-only rows include roles asking 3 to 5+ years (for example 117, 126, 163, 232), so Q4 is reported with and without Associate.
 - Data available for Q4 (description exp known / portal min known / both / neither): any rule 28 / 27 / 13 / 9 of 51; without Associate 15 / 19 / 8 / 7 of 33; without Associate and internships 11 / 15 / 7 / 1 of 20.
 - Interns rarely state years, so the internship-free cut is the meaningful base for "still ask for 1+ years". Q4 is reported as counts ("k of N"), not headline percentages.
+
+## Step 11: salary (2026-11-13)
+
+- Portal salary present on 68 of 300 rows (Naukri 36, Indeed 25, LinkedIn 6, Foundit 1). The Foundit row is job 273, an off-target training-institute internship ad. The description added 2 salaries where the portal said Not disclosed (job 67, 1.5-3 LPA; job 149, 12-15 LPA, off-target). Other description hits were false or stipends (284 "5 lakh customers", 184 stipend). No bare-number salary mentions found in the analysis set.
+- All values converted to LPA. Rules: Naukri "X-Y Lacs P.A." in lakhs, and a comma-grouped value of 1,000 or more is rupees ("50,000-3 Lacs P.A." = 0.5 to 3.0); Indeed monthly x 12 then / 100,000, Indian digit grouping handled, "From" = minimum only, "Up to" = maximum only; LinkedIn K = 1,000, M = 1,000,000, /month x 12; Foundit "LPA" in lakhs. 0 unparsed.
+- Analysis set (246): 56 rows with a salary; 51 after removing 5 internship stipends (119, 143, 215, 216, 224). Usable by source: Naukri 28, Indeed 20, LinkedIn 3, Foundit 0. By city: Bengaluru 13, Hyderabad 8, Pune 8, Delhi/NCR 8, Chennai 7, Mumbai 6, Other 1. 48 have a midpoint (208, 237 and 219 have only one bound).
+- Duplicates: no salary lost when collapsing; groups 1/4 and 14/49 carry different values, kept row used.
+- Outlier flags (kept in the data; Phase 4 reports medians with and without them): high_pay_10plus_lpa 27, 28, 99, 208, 244 (27 and 28 are staffing postings); high_for_fresher_title 89; minimum_below_1_lpa 48, 57, 58; possible_platform_estimate 202, 237 (identical Indeed minimum); very_wide_range 214. Not checked against the live postings.
+- Descriptive statistics are computed in Phase 4. Salary comparisons by city or skill are shown with counts and no claims of significance.
