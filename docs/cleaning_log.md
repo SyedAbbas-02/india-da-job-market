@@ -145,3 +145,11 @@
 - Result: exp_min filled for 178 of 300 rows (description 161, manual 15 less job 2, fresher label 3); 122 null. 20 of the null rows use fresher or entry-level wording only (flag exp_entry_wording).
 - Analysis set (246): 150 filled, 96 null. Filled by source: LinkedIn 45 of 65, Foundit 41 of 52, Indeed 38 of 53, Naukri 26 of 76. Naukri is thin because its range sits in the header field and recruiters rarely repeat it.
 - Main measure stays description-only (questions.md). A sensitivity column falls back to the portal value and records the source.
+
+## Step 9b: portal experience and sensitivity column (2026-11-13)
+
+- experience_portal parsed for all 26 distinct formats ("0 - 2 years", "3-5 Years", "Fresher", "0 years", ...) into exp_portal_min and exp_portal_max; Not mentioned stays null. Portal values never overwritten.
+- exp_min_fallback = description value, else portal minimum; exp_fallback_source records which. Analysis set (246): description 149, portal fallback 66, none 31.
+- Caveat: portal ranges starting at 0 count as a minimum of 0, so the fallback inflates the fresher band. It is a sensitivity check only.
+- Description vs portal, analysis set: both values present for 69 rows (Foundit 41, Naukri 25, Indeed 3; LinkedIn has no portal experience field). exp_conflict_flag (minimums differ by 1+ year): 13 rows (Naukri 8 of 25, Foundit 5 of 41, Indeed 0 of 3). Description minimum above the portal maximum (desc_min_above_portal_max): 2 rows.
+- Job 2 text lost a dash ("Suggested range: 14 years"): exp_min null, flagged (exp_lost_dash, with 100, 58 and 61).
