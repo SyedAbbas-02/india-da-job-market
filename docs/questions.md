@@ -7,6 +7,7 @@
 - Entry-level title means the title contains Fresher, Junior or Jr, Trainee, Intern, Associate, or a level marker such as "I". Q4 reports results with and without Associate titles.
 - Samples are small (a few dozen rows per city). Report counts next to percentages and make no claims of statistical significance.
 - Naukri and LinkedIn differ (Naukri has salary, experience and skill tags; LinkedIn skews toward large multinationals). Show the portal split where it changes the answer.
+- Q1 base (frozen in Phase 3): analysis-set rows whose title contains the words "data analyst". Left out of the base: titles with Associate (reported as a sensitivity), titles naming two roles (jobs 34, 35, 256), and "Data Analytics ..." titles without the words "data analyst" (jobs 48, 126, 163, 182, 208, 209). Senior and Junior titles stay in; internships stay in and are flagged (is_internship). Fresher band = description exp_min of 0 to 1; experienced band = 2 or more; rows with no stated minimum are reported as unknown and are not forced into a band. Results show counts per band and per portal. The portal-fallback band is a sensitivity only.
 
 ## Questions
 
