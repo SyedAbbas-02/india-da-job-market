@@ -1,8 +1,8 @@
 # Cleaning log
 
-Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not off_target and not a duplicate): Naukri 76, LinkedIn 65, Indeed 53, Foundit 52. Steps 12 onward (skills, education, MySQL tables) are not done yet. Open items are listed at the end.
+Where things stand (end of Phase 3): 300 raw rows; 246 in the analysis set (not off_target and not a duplicate): Naukri 76, LinkedIn 65, Indeed 53, Foundit 52. The cleaned tables (jobs, skills, job_skills) are loaded in MySQL and verified against Pandas (step 14c). Open items are listed at the end.
 
-## Step 1: Load and inspect (2026-11-14)
+## Step 1: Load and inspect (2026-11-13)
 
 - Raw file: 300 rows x 17 columns, 300 unique job_ids, 300 unique URLs. Naukri 99, LinkedIn 80, Indeed 62, Foundit 59.
 - 0 empty cells. Placeholders: salary Not disclosed 232 (77%), skills No tags 142, experience_portal Not mentioned 134, posted_ago Not mentioned 62 (all Indeed).
@@ -11,13 +11,13 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - work_mode_portal has "Hybrid work" (1) and "Hybrid" (22); to merge.
 - industry_type: 143 Not mentioned, 50 "Other", labels differ by portal; not merged.
 
-## Step 2a: Short text columns (2026-11-14)
+## Step 2a: Short text columns (2026-11-13)
 
 - Trimmed/collapsed whitespace, non-breaking spaces and zero-width characters: job_title 9 values changed, education 63 (line breaks between UG and PG), all other short text columns 0.
 - Placeholder casing variants: 0 found.
 - work_mode_clean created: "Hybrid work" (1) merged into "Hybrid"; Hybrid 23, On-site 56, Remote 13, Not mentioned 208. Original work_mode_portal kept.
 
-## Step 2b: description_clean (2026-11-14)
+## Step 2b: description_clean (2026-11-13)
 
 - description_text kept unchanged; cleaned copy in description_clean.
 - Mojibake fixed in 2 rows (job 200: curly apostrophes; job 292: broken dash). 0 left.
@@ -26,7 +26,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Total rows where description_clean differs from description_text at this point: 28 of 300.
 - Not done in this step: boilerplate (Step 3) and glued words from lost line breaks (still open, see Open items).
 
-## Step 3: Boilerplate stripped from description_clean (2026-11-14)
+## Step 3: Boilerplate stripped from description_clean (2026-11-13)
 
 - Cut from marker to end of text: LinkedIn "Requirements added by the job poster" 4 rows (110, 148, 158, 166; 549 chars); LinkedIn "Benefits found in job post" 4 rows (115, 124, 125, 152; 188 chars); "Powered by JazzHR" 1 row (136; 31 chars); Indeed "Application Question(s):" 1 row (228; 616 chars).
 - Job 152 (benefits line) was not in the collection notes; found by the check.
@@ -40,7 +40,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Final description_clean length: min 125, median 2,428, max 16,635 chars.
 - thin_description flag (under 500 chars): 20 rows (Naukri 16, Indeed 3, Foundit 1), 3 of them under 300 (jobs 3, 27, 102). Kept and flagged; skill results to be checked with and without them.
 
-## Step 4a: is_internship (2026-11-14)
+## Step 4a: is_internship (2026-11-13)
 
 - Rule: title contains intern/internship, plus one description-based case. 15 rows flagged (LinkedIn 8, Indeed 3, Foundit 3, Naukri 1): jobs 118, 119, 130, 142, 143, 144, 159, 184, 215, 216, 224, 255, 264, 273, 39.
 - Job 39 flagged by description ("Position: Business Analyst (Intern)", 3 months, then permanent); its title does not say intern.
@@ -49,7 +49,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Naukri Employment Type has no Internship value (92 Full Time Permanent, 4 Full-Time, 1 Full-Time., 1 Full Time Temporary/Contractual, 1 Part Time Temporary/Contractual).
 - Flagged rows are excluded from the salary analysis (stipends).
 
-## Step 4b: is_remote and is_contract (2026-11-14)
+## Step 4b: is_remote and is_contract (2026-11-13)
 
 - is_remote: 19 rows = 13 where the portal says Remote (jobs 8, 27, 28, 32, 54, 94, 99, 118, 122, 141, 159, 169, 203) + 6 where the description says remote but the portal does not (77, 184, 255, 264, 277, 296).
 - Portal and description disagree on work mode: 77 (portal Hybrid, description Remote), 184 (portal On-site, description Remote), 123 and 259 (portal Not mentioned, description hybrid). Portal value kept in work_mode_portal.
@@ -59,7 +59,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Job 233 lists "Contract / Freelance" among options only; not flagged (it is an excluded trainer role anyway).
 - "Contract Type : Permanent" (82, 170, 293) and benefits or legal text using the word "contract" are not contract roles.
 
-## Step 4c: bond, eligibility, staffing flags (2026-11-14)
+## Step 4c: bond, eligibility, staffing flags (2026-11-13)
 
 - Keyword searches produce many false hits (equal-opportunity paragraphs mentioning persons with disabilities, "we bond beyond work", "our clients"), so every flagged row was read in context and the reason is stored (eligibility_reason, staffing_reason).
 - has_bond_or_service_agreement: 3 rows: 61 (1-year commitment), 91 (2-year agreement), 93 (2.5-year agreement). Job 91 was missed by the first keyword pass (spacing around the hyphen in "2 - year agreement"); job 61 was found (the collection notes mention "bond" only as non-job text).
@@ -68,14 +68,14 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - is_staffing_or_aggregator: 18 rows at this step: 16, 27, 28, 32, 37, 41, 43, 56, 78, 84, 94, 96, 156, 208, 264, 267, 300, 302. Job 15 added in step 5b (19 rows).
 - Not flagged despite name or text hits: 52 (software firm), 71 and 103 (company name differs from URL name; borderline), 273 (training institute, handled under off-target), ordinary "our clients" company text.
 
-## Step 4d: off_target (2026-11-14)
+## Step 4d: off_target (2026-11-13)
 
 - 31 rows flagged off_target, all from the collection notes. Each title and company was re-checked and a reason code stored (off_target_reason). The rule-based title check found 3 more candidates: 295 (title only, analyst work: kept), 183 (analyst duties, 0-3 years: kept), 276 (IIoT analytics, SQL/Python/Power BI: kept, borderline).
 - Reasons: finance_or_accounting 8, ml_or_ai_model_work 5, data_engineering 4, software_dev_or_testing 4, support_or_data_entry_or_placeholder 4, other_job_family 3, teaching_or_training 2, not_an_employer_posting 1.
 - Excluded rows stay in the full table; analysis uses off_target == False.
 - is_contract corrected: job 12 says "1 year Fixed Term Contract" in the title only, which the description search missed. is_contract is now 4 rows (12, 20, 54, 208).
 
-## Step 4e: borderline (2026-11-14)
+## Step 4e: borderline (2026-11-13)
 
 - 37 rows flagged borderline, none of them off_target. Kept in the analysis; Phase 4 will show key results with and without them.
 - First pass taken from the collection notes, not from a re-read of every description. Reasons: software_requirements_ba 11, mixed_or_low_quality 8, finance_or_regulatory_adjacent 7, sales_or_revenue_ops 5, engineering_or_dev_adjacent 4, data_governance_or_quality 2.
@@ -86,14 +86,14 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - is_internship 15, is_remote 19, is_contract 4, has_bond_or_service_agreement 3, eligibility_restricted 11, is_staffing_or_aggregator 18, off_target 31, borderline 37, thin_description 20.
 - Later changes: job 15 added to off_target (32) and staffing (19) in step 5b. is_repost_or_dup was set in step 5b.
 
-## Step 5a: duplicate detection (2026-11-14)
+## Step 5a: duplicate detection (2026-11-13)
 
 - Pandas comparison of all 44,850 row pairs: description overlap (5-word shingles, Jaccard 0.5 or more) or same normalized company and title. 38 candidate pairs; all 15 pairs known from the collection notes were detected.
 - New pairs not in the notes: 43/56, 14/49, 150/274, 122/203, 125 (third TriNet copy with 205 and 263), 40/198, 95/242; 15/84 and 24/92 were reviewed in step 5b.
 - Not duplicates: MIS Executive template pairs 55/70/101/102 (different employers, same Naukri template); 34/35 (Syntrex) and 134/177 (EXL) have the same company and title but different text (overlap 0.03 and 0.0).
 - Job 79 (MitKat) overlaps jobs 30 and 33 at 0.96, although the collection notes called it not a repost; resolved in step 5b.
 
-## Step 5b: duplicates collapsed (2026-11-14)
+## Step 5b: duplicates collapsed (2026-11-13)
 
 - Text diffs checked for the unclear pairs. Decisions: 15/84 same Creative Hands HR placeholder (15 flagged off_target and staffing like 84); 30/33/79 (MitKat) same posting in three cities, differing only by an apostrophe encoding, so job 79 IS a repost (the collection note "job 79 not a repost" is corrected); 36/125/205/263 (TriNet) one posting on four portals; 95/242 same posting under two company spellings; 166/291 (Media.net) identical text once spaces and punctuation are ignored; 24/92 not duplicates (shared template line only).
 - 20 duplicate groups, 24 rows flagged is_repost_or_dup (LinkedIn 9, Naukri 8, Indeed 5, Foundit 2). 276 unique postings remain.
@@ -102,11 +102,11 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Off-target is now 32 rows (31 from the notes + job 15); staffing 19.
 - Analysis set (not off_target and not duplicate): 246 of 300 rows. By source: Naukri 76, LinkedIn 65, Indeed 53, Foundit 52.
 
-## Step 6: off-target exclusion (2026-11-14)
+## Step 6: off-target exclusion (2026-11-13)
 
 - Done in steps 4d and 5b: off_target is 32 rows (31 from the collection notes + job 15, the same placeholder as job 84). Excluded rows stay in the full table with a reason. The analysis set is not off_target and not is_repost_or_dup: 246 of 300 rows (Naukri 76, LinkedIn 65, Indeed 53, Foundit 52).
 
-## Step 7: city standardization (2026-11-14)
+## Step 7: city standardization (2026-11-13)
 
 - 83 raw city strings reduced to six metros (Bengaluru, Hyderabad, Pune, Chennai, Mumbai, Delhi/NCR) plus Other and Unknown. Mapping: Pimpri-Chinchwad to Pune; Navi Mumbai and Thane to Mumbai; Gurugram, Noida and Delhi to Delhi/NCR; Serilingampalli to Hyderabad.
 - search_city derived from the job_id block each posting was collected under (pilot rows 1-10 have none).
@@ -118,7 +118,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Final counts, all 300 rows: Bengaluru 64, Delhi/NCR 49, Mumbai 47, Chennai 46, Hyderabad 45, Pune 45, Other 3, Unknown 1.
 - Analysis set (246): Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34, Other 1, Unknown 1. For the six metros, city-by-portal cells run from 7 to 21 rows (Bengaluru-Naukri 21). These follow collection quotas and say nothing about market size.
 
-## Step 8: posting age (2026-11-14)
+## Step 8: posting age (2026-11-13)
 
 - Age is measured from date_collected (Naukri 3-6 Nov, LinkedIn 8 Nov, Indeed 9 Nov, Foundit 10-11 Nov; pilot rows 3 Nov).
 - posted_ago has 46 distinct values (45 phrasings plus Not mentioned); one parser read all of them (0 unreadable). Months approximated as 30 days ("a month ago" = 30, "2 months ago" = 60).
@@ -130,14 +130,14 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Results: 58 of 238 known-age rows are old (Naukri 37, LinkedIn 14, Foundit 7). In the analysis set: 193 known age, 50 old (Naukri 31, LinkedIn 12, Foundit 7), 53 unknown (all Indeed), 16 reposted-label rows. Among rows with a known age: median 12 days, max 1,578.
 - Any "share of old postings" figure excludes Indeed.
 
-## Step 9a: experience phrases (2026-11-14)
+## Step 9a: experience phrases (2026-11-13)
 
 - 184 of 300 rows contain a number-plus-years/months phrase in description_clean; 116 do not (Naukri 61, LinkedIn 23, Indeed 20, Foundit 12). Only 20 of those 116 use fresher or entry-level wording.
 - Consequence: description-based exp_min is null for about 40% of rows, most of them Naukri, where the range sits in the header field. Main experience measure stays description-only (as in questions.md); a separate sensitivity column falls back to the portal value and records its source.
 - Number-plus-years phrases that are not experience requirements and must be excluded: service bond and agreement terms, company history ("for over N years, we've scaled"), planning horizons, internship duration, and "Fresher (N years)" labels.
 - Parser rule: a phrase counts when "experience" or "exp" is within about 40 characters, or it follows an "Experience:" label.
 
-## Step 9: experience from description (2026-11-14)
+## Step 9: experience from description (2026-11-13)
 
 - Parser reads: ranges with hyphen, en dash or "to"; "N+"; "minimum / at least / over N"; "up to / less than N" (min 0, max N); months divided by 12; "Experience: Fresher" label = 0. A phrase counts only when "experience" or "exp" is within about 40 characters. Units glued to the next word ("2yrsType") are handled.
 - Rejected on purpose (17 phrases, checked by eye): service bonds and agreements (61, 91, 93), company history (52, 120, 128, 131, 245), a planning horizon (249), internship durations (39, 142, 184, 215, 255). Job 208 was wrongly rejected and fixed by hand.
@@ -149,7 +149,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Analysis set (246): 149 filled, 97 null. Filled by source: LinkedIn 45 of 65, Foundit 41 of 52, Indeed 38 of 53, Naukri 25 of 76. Naukri is thin because its range sits in the header field and recruiters rarely repeat it.
 - Main measure stays description-only (questions.md). A sensitivity column falls back to the portal value and records the source.
 
-## Step 9b: portal experience and sensitivity column (2026-11-14)
+## Step 9b: portal experience and sensitivity column (2026-11-13)
 
 - experience_portal parsed for all 26 distinct formats ("0 - 2 years", "3-5 Years", "Fresher", "0 years", ...) into exp_portal_min and exp_portal_max; Not mentioned stays null. Portal values never overwritten.
 - exp_min_fallback = description value, else portal minimum; exp_fallback_source records which. Analysis set (246): description 149, portal fallback 66, none 31.
@@ -157,7 +157,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Description vs portal, analysis set: both values present for 69 rows (Foundit 41, Naukri 25, Indeed 3; LinkedIn has no portal experience field). exp_conflict_flag (minimums differ by 1+ year): 13 rows (Naukri 8 of 25, Foundit 5 of 41, Indeed 0 of 3). Description minimum above the portal maximum (desc_min_above_portal_max): 2 rows (jobs 21 and 63).
 - Lost-dash rows flagged exp_lost_dash: jobs 2, 100, 58 and 61.
 
-## Step 10: entry-level title flag (2026-11-14)
+## Step 10: entry-level title flag (2026-11-13)
 
 - Rule from questions.md. entry_title_words: Fresher, Junior or Jr, Trainee, Intern in the title. entry_title_assoc: Associate. entry_title_level: a level marker (I or 1 after Analyst, Executive, Associate or Engineer, or at the end of the title; "II" does not match). Titles matched after replacing underscores with spaces and en dashes with hyphens.
 - Bug caught: underscores hid "Fresher" in jobs 38 and 39 (word boundaries treat "_" as a letter). Fixed; the analysis-set count went from 49 to 51.
@@ -168,7 +168,7 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Data available for Q4 (description exp known / portal min known / both / neither): any rule 28 / 27 / 13 / 9 of 51; without Associate 15 / 19 / 8 / 7 of 33; without Associate and internships 11 / 15 / 7 / 1 of 20.
 - Interns rarely state years, so the internship-free cut is the meaningful base for "still ask for 1+ years". Q4 is reported as counts ("k of N"), not headline percentages.
 
-## Step 11: salary (2026-11-14)
+## Step 11: salary (2026-11-13)
 
 - Portal salary present on 68 of 300 rows (Naukri 36, Indeed 25, LinkedIn 6, Foundit 1). The Foundit row is job 273, an off-target training-institute internship ad. The description added 2 salaries where the portal said Not disclosed (job 67, 1.5-3 LPA; job 149, 12-15 LPA, off-target). Other description hits were false or stipends (284 "5 lakh customers", 184 stipend). No bare-number salary mentions found in the analysis set.
 - All values converted to LPA. Rules: Naukri "X-Y Lacs P.A." in lakhs, and a comma-grouped value of 1,000 or more is rupees ("50,000-3 Lacs P.A." = 0.5 to 3.0); Indeed monthly x 12 then / 100,000, Indian digit grouping handled, "From" = minimum only, "Up to" = maximum only; LinkedIn K = 1,000, M = 1,000,000, /month x 12; Foundit "LPA" in lakhs. 0 unparsed.
@@ -180,11 +180,12 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 
 ## Open items
 
-- Glued words (lost line breaks, for example "dataanalysis", "Job DescriptionAs a") are NOT fixed. Skill extraction with word boundaries will miss skills glued to a neighbouring word. Measure how many rows are affected in step 12 before deciding on a fix.
-- Boilerplate not stripped yet: equal-opportunity paragraphs (36 rows), fraud warnings (11 rows, mixed with real content), empty template headings (jobs 116, 137), placeholder text (job 154), company website links. To be tested against skill extraction. Appended "Skills:" lines (for example jobs 130, 156, 174, 175) are kept on purpose and marked in step 12.
-- Names of individuals in descriptions (collection notes: jobs 245 and 291) must be removed before anything is published. Raw data and full description text stay off GitHub.
-- Decisions made without a full read of the data: borderline flags (from the collection notes only), the probable duplicate group 40/198 (not diffed), job 189 as the one "no metro" city row (deduced), salary outliers (not checked against live postings), the pilot city for jobs 1 and 4 (assumed Bengaluru).
-- Steps 12 (skills), 13 (education) and 14 (MySQL tables jobs, skills, job_skills) are not done. Step 12 is in progress.
+- Glued words (lost line breaks): for tool skills only 4 words in the analysis set contained a tool name without being it (QlikView in 3 rows, SQLJobs in 1), so no tool is missed. Glue inside multi-word concepts (for example "dataanalysis") cannot be measured that way, so concept counts may be slightly low. The text itself was not repaired.
+- Boilerplate not stripped: equal-opportunity paragraphs (36 rows), fraud warnings (11 rows, mixed with real content), empty template headings (jobs 116, 137), placeholder text (job 154), company website links. Skill and education extraction ran on description_clean as it is; appended "Skills:" lines are kept and counted at the keyskills level.
+- Names of individuals in descriptions (collection notes: jobs 245 and 291) must not be published. Raw data and full description text stay off GitHub; the database holds no description text.
+- Decisions made without a full read of the data: borderline flags (collection notes only), probable duplicate group 40/198 (not diffed), job 189 as the one "no metro" city row (deduced), salary outliers (not checked against live postings), the pilot city for jobs 1 and 4 (assumed Bengaluru), Statistics counts (heuristic, about 11 decisions read), preferred-level detection (heuristic, 12 random decisions read).
+- Education: field of study was not extracted (decision, step 13).
+- notebooks/02_cleaning.ipynb is the working record (outputs cleared). It will not reproduce the tables with "Run All" (rulings by job id, patches applied in memory). This log is the authoritative record of every rule and count.
 
 ## Step 12: skills extraction (2026-11-14)
 
@@ -210,3 +211,32 @@ Where things stand (end of step 11): 300 raw rows; 246 in the analysis set (not 
 - Confounding: Foundit has 20 experienced rows and no fresher row; Naukri has 8 of the 19 fresher rows and only 2 experienced. Only LinkedIn and Indeed have both bands (fresher 11, experienced 24), so a band-to-band skill comparison on all four portals is mixed up with portal differences.
 - False skill hits found by reading snippets: job 192 "Spark Capital" (an investor) counted as Spark; job 190 "The Hive" (an office address) counted as Hive. PySpark is counted as Spark by design.
 - Spark and Hadoop/Hive checked by reading snippets: false hits removed (job 192 "Spark Capital", job 265 "Spark Greatness", job 190 "The Hive" office address). Analysis set: Spark 9 rows, Hadoop/Hive 3 rows. PySpark counts as Spark by design.
+
+## Step 13: education (2026-11-14)
+
+- Decision: minimal extraction. Field of study is not extracted (none of the five questions uses it; hard gates are in eligibility_restricted). One level per posting from description_clean: bachelor (bachelor, graduate, degree or diploma wording, or B.Tech, BCA, B.Sc, B.Com, BBA); master (only when no bachelor-level option is stated); graduates_welcome (audience wording such as "recent graduates"); not_required; preferred_only (degree wording only inside "preferred / a plus / advantage" sentences); none. When several acceptable levels are listed, the lowest is taken (same rule as experience).
+- Parser bugs found by reading trigger sentences and fixed: sentence splitting broke on abbreviations like "B.Sc." (jobs 2, 160, 253 wrongly master); Naukri's normal heading "Preferred candidate profile" was read as a preference cue (job 11); "BA" meaning Business Analyst was read as Bachelor of Arts (job 140); "recent/fresh graduates" audience wording was read as a degree requirement (jobs 14, 224, 49).
+- Manual: jobs 16, 87, 106, 117, 131, 200 state a real bachelor requirement in a sentence that also holds a preference cue ("MBA is a plus", "Masters is a plus", "Computer Science degree preferred"); set to bachelor (edu_manual). Jobs 115, 163, 192, 270, 277 are genuinely preferred-only.
+- Result, analysis set (246): bachelor 137, none 100, preferred_only 5, graduates_welcome 2 (jobs 14, 224), not_required 1 (job 188, "open to all backgrounds"), master 1 (job 237, "MBA from a recognized institution"). By source (bachelor / none): Naukri 40/35, LinkedIn 38/25, Indeed 31/18, Foundit 28/22. A master's degree is the stated minimum in 1 of 246 postings.
+- Portal education exists only for Naukri-style fields: 170 of 246 analysis rows are Not mentioned. Of the rest: "Any Graduate" 64 (description gives bachelor-level 30, graduates_welcome 1, none 33), specific degrees 10 (bachelor 9, none 1), "Graduation Not Required" 2 (bachelor 1, none 1). edu_conflict_flag: jobs 41 (off-target) and 89 ("Graduation Not Required" vs a Finance or Economics degree in the text). The portal field adds almost nothing.
+- Gate scan of all 300 rows (gender and age wording): job 11 ("Male candidates only") and job 67 ("Age: 20 to 30 years") are hard gates and were missing from eligibility_restricted; both added in step 13b. Job 61 ("Gender: Male/Female") is not a restriction. No other age or gender wording found. eligibility_restricted is now 13 rows (11 in the analysis set; jobs 91 and 104 are off-target). The Step 4c count of 11 was the first pass.
+- Not extracted: field of study (for example "B.Tech only"), academic-percentage details beyond eligibility_restricted.
+
+## Step 14a: tables built in Pandas (2026-11-14)
+
+- Three tables: jobs (300 rows x 76 columns), skills (45 rows: skill_id, skill, skill_type), job_skills (2,007 rows: job_id, skill_id, desc_level, desc_mentions, in_portal_tags). job_skills is the 2,010 rows from step 12 minus 3 rows removed by the false-hit patches (jobs 190, 192, 265; each had one mention and no portal tag).
+- Design: no description text in the database, structured fields and flags only. All 300 rows are loaded with in_analysis_set (not off_target and not a duplicate); analysis queries filter on it. Missing values are NULL, not empty strings; flags are 0/1. Left out of jobs: url, applicants, openings, industry_type, the skills_portal text and all description columns.
+- Integrity checks in Pandas: unique job_id; 0 job_skills rows with a job_id missing from jobs or a missing skill_id; 0 duplicate (job, skill) pairs; 0 job_skills rows with neither a description level nor a portal tag.
+- NULL counts match the flags (off_target_reason 268 NULL = 32 filled, staffing_reason 281 = 19, eligibility_reason 287 = 13, borderline_reason 263 = 37, salary_form 230 = 70 salaries, dup_group 256 = 44 filled = 24 duplicates + 20 kept rows).
+- Control totals MySQL must reproduce: jobs 300; in_analysis_set 246 (Naukri 76, LinkedIn 65, Indeed 53, Foundit 52; Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34, Other 1, Unknown 1); off_target 32; is_repost_or_dup 24; q1_base 102; entry_title_any in the analysis set 51; salary_usable 51; salary_usable_clean 39; eligibility_restricted 13; job_skills 2,007; analysis-set skill rows with a description mention 1,574 (SQL 192, Excel 150, Python 99, Spark 9).
+
+## Step 14b: tables created in MySQL (2026-11-14)
+
+- sql/02_create_tables.sql run in MySQL Workbench (local instance, MySQL 8.0, database job_market). Tables jobs (76 columns), skills (3) and job_skills (5) created and checked in information_schema.
+- Warnings on creation were harmless: "Unknown table" on the first DROP TABLE IF EXISTS (nothing to drop) and "Integer display width is deprecated" for the 35 TINYINT(1) flag columns. No errors.
+
+## Step 14c: load into MySQL and verification (2026-11-14)
+
+- Loaded with Python (SQLAlchemy and PyMySQL; credentials in a git-ignored .env file): skills 45 rows, jobs 300, job_skills 2,007, in one transaction (a failure rolls back all three tables; existing rows are deleted first so the cell can be re-run). A preflight compared every CSV column name and text length with the table definitions in information_schema: 0 differences.
+- Verified in MySQL against the Pandas control totals: all 21 checks match (jobs 300; skills 45; job_skills 2,007; analysis set 246; off_target 32; is_repost_or_dup 24; q1_base 102; entry-level in the analysis set 51; salary_usable 51; salary_usable_clean 39; eligibility_restricted 13; exp_min filled 178; salary_form filled 70; dup_group filled 44; off_target_reason filled 32; primary_city NULL 0; analysis-set skill rows with a description level 1,574; SQL 192, Excel 150, Python 99, Spark 9). Analysis set by source (Naukri 76, LinkedIn 65, Indeed 53, Foundit 52) and by city (Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34, Other 1, Unknown 1) match Pandas exactly.
+- Phase 3 result: 300 postings collected, 24 duplicate rows, 32 off-target rows, 246 usable (82%).
