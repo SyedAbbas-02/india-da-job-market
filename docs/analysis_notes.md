@@ -28,3 +28,10 @@
 - Hyderabad is highest under all three definitions (10 of 35, 8 of 35, 5 of 35), by 2 to 3 postings. Other cities reorder with the definition: Mumbai drops from 9 to 4 without Associate titles (5 of its 9 are Associate-titled). No reliable difference between cities.
 - Title mix by city follows the collection design (fixed title slots per city), not the market. Only Chennai shows a supply signal: 13 of 36 postings are Business Analyst because Data Analyst, MIS and Operations postings were thin there.
 - Counts are from my sample; no significance claims.
+
+## Q3 (part 1): salary disclosure by portal (sql/10_q3_salary_disclosure.sql, run 2026-11-22)
+
+- Base: analysis set (246 rows). The portal shows a salary on 55 rows (22.4%); 191 rows say Not disclosed. A parsed salary exists for 56 rows (one extra comes from a description). Usable annual salary: 51 (20.7%). Clean, not outlier: 39 (15.9%).
+- By portal, portal shows / usable / clean: Indeed 23 of 53 (43.4%) / 20 / 15; Naukri 27 of 76 (35.5%) / 28 / 21; LinkedIn 5 of 65 (7.7%) / 3 / 3; Foundit 0 of 52 / 0 / 0. (Foundit shows salary on 1 of 59 collected rows; that row is a training-institute ad outside the analysis set.)
+- Usable excludes internship stipends (LinkedIn 2, Indeed 3 monthly figures). 12 of 51 usable salaries are flagged as outliers (7 in lakh ranges, 2 annual ranges, 2 from-minimum-only, 1 monthly).
+- Counts are small and from my sample, not market rates.
