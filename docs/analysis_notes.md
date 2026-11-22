@@ -51,3 +51,13 @@
 - Median midpoint (LPA), stated vs not stated, n in brackets: SQL 4.50 (21) vs 3.53 (16); Python 4.75 (8) vs 3.90 (29); Tableau 4.25 (14) vs 4.00 (23); Power BI 4.06 (18) vs 4.00 (19); Excel 4.00 (33) vs 3.41 (4).
 - Excel is stated in 33 of 37 salary rows, so there is no usable comparison group. Power BI and Tableau show no difference. SQL and Python lean higher but the groups mix fresher and 2 to 8 year roles and different portals, and all ranges overlap (about 1.5 to 6.6 LPA).
 - Q3 answer: most postings hide salary (191 of 246 in the analysis set; 39 clean salaries), and the few that show it are too few and too mixed to link salary to city or skill. No salary premium for any skill is claimed.
+
+## Q4: the experience gap for entry-level titles (sql/14_q4_experience_gap.sql, run 2026-11-22)
+
+- Base: analysis set, three versions of the entry-level title rule: any (with Associate) 51 rows, without Associate 33, strict (no Associate, no internship) 20. Experience from the description (exp_min); a posting with no number is counted separately, never as 0.
+- Any rule: 28 of 51 state a minimum; 14 of those ask 1+ years and 11 ask 2+; 23 state no number. Without Associate: 15 state a minimum, 6 ask 1+, 4 ask 2+, 18 state no number. Strict: 11 state a minimum, 6 ask 1+, 4 ask 2+, 9 state no number.
+- This is a floor, not a rate for all entry-level postings: the postings with no stated number may or may not ask for experience. Naukri has 11 of 15 entry-level rows with no number in the description.
+- By portal (any rule), rows / state a minimum / ask 1+: Foundit 10 / 7 / 6; LinkedIn 18 / 10 / 6; Indeed 8 / 7 / 1; Naukri 15 / 4 / 1. Cells are 4 to 10 rows, so direction only.
+- Junior and level-I titles also ask for experience: job 270 (2 to 5 years), 151 (2 to 4), 174 (1 to 2), 286 (3 to 5), 261 (2 to 3), 250 (1 to 3). All 14 rows asking 1+ years were read in the Part C list.
+- Description vs portal: 13 any-rule rows have both values; 3 differ by 1+ year (jobs 261, 303, 52), always with the portal lower (portal 0, description 2). Strict rule: 1 of 7 (job 261). The portal Fresher label is the unreliable part; portal ranges usually match the description.
+- Counts from my sample; no significance claims.
