@@ -7,3 +7,13 @@
 - Indeed, analysis set: 7 rows labelled Fresher; 3 state a minimum, all 0; none asks for 1 or more years.
 - All 300 rows: Foundit 17 labelled Fresher (2 outside the analysis set, 1 of them with a stated minimum of 0), Indeed 8 (1 outside).
 - Counts are small (15 and 7 rows). These are counts from my sample, not rates for the market.
+
+## Q1: skills in Data Analyst postings (sql/05_q1_skills.sql, run 2026-11-22)
+
+- Base: 102 Data Analyst-titled postings in the analysis set. By description minimum: fresher (0-1 years) 19, experienced (2+) 46, no stated minimum 37 (in the overall column, in neither band).
+- A skill counts only when the description states it (desc_level = stated); preferred, keyskills blocks and portal-tag-only mentions are excluded.
+- Most common overall: Dashboards/visualization 83 of 102, SQL 78, Power BI 57, Excel 49, Data cleaning/quality 47, Python 44, Tableau 40.
+- SQL is common in both bands: 15 of 19 fresher, 39 of 46 experienced.
+- Largest gap: Excel, 14 of 19 fresher vs 19 of 46 experienced. Pivot tables 7 of 19 vs 8 of 46. Python 7 of 19 vs 25 of 46. Machine learning 0 of 19 vs 9 of 46.
+- The fresher band has 19 postings, so one posting moves a percentage by about 5 points. Counts from my sample, not market rates; no significance claims.
+- "Dashboards/visualization" is a broad concept bucket, not a tool; read it with that in mind.
