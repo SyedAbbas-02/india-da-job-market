@@ -44,3 +44,10 @@
 - Jobs 27 and 28 (10 to 16 LPA, Bengaluru) do not change the Bengaluru median (4.50 with and without them). Including all outliers moves Delhi/NCR to 4.50, Chennai to 2.82 and Pune to 2.58.
 - Cities cannot be ranked by salary: each city has 5 to 11 postings, ranges mix fresher and 2 to 8 year roles (Mumbai's three highest rows ask 1, 3 and 8 years), and portals differ (Naukri ranges vs Indeed monthly figures converted to annual). Posted ranges are not pay.
 - Counts from my sample; no significance claims.
+
+## Q3 (part 3): salary by skill (sql/13_q3_salary_by_skill.sql, run 2026-11-22)
+
+- Pool: the same 37 clean salaries with a midpoint. A skill counts only when the description states it; "not stated" mixes jobs that do not need the skill with thin descriptions.
+- Median midpoint (LPA), stated vs not stated, n in brackets: SQL 4.50 (21) vs 3.53 (16); Python 4.75 (8) vs 3.90 (29); Tableau 4.25 (14) vs 4.00 (23); Power BI 4.06 (18) vs 4.00 (19); Excel 4.00 (33) vs 3.41 (4).
+- Excel is stated in 33 of 37 salary rows, so there is no usable comparison group. Power BI and Tableau show no difference. SQL and Python lean higher but the groups mix fresher and 2 to 8 year roles and different portals, and all ranges overlap (about 1.5 to 6.6 LPA).
+- Q3 answer: most postings hide salary (191 of 246 in the analysis set; 39 clean salaries), and the few that show it are too few and too mixed to link salary to city or skill. No salary premium for any skill is claimed.
