@@ -35,3 +35,12 @@
 - By portal, portal shows / usable / clean: Indeed 23 of 53 (43.4%) / 20 / 15; Naukri 27 of 76 (35.5%) / 28 / 21; LinkedIn 5 of 65 (7.7%) / 3 / 3; Foundit 0 of 52 / 0 / 0. (Foundit shows salary on 1 of 59 collected rows; that row is a training-institute ad outside the analysis set.)
 - Usable excludes internship stipends (LinkedIn 2, Indeed 3 monthly figures). 12 of 51 usable salaries are flagged as outliers (7 in lakh ranges, 2 annual ranges, 2 from-minimum-only, 1 monthly).
 - Counts are small and from my sample, not market rates.
+
+## Q3 (part 2): salary by city (sql/11_q3_salary_outliers.sql, sql/12_q3_salary_by_city.sql, run 2026-11-22)
+
+- Outlier review (all 51 usable salaries read by hand): the 12 flags were kept. Reasons: high pay (jobs 99, 244, 28, 27, 208), high for a fresher title (89), probable platform estimate (202, 237), very wide range (214), minimum below 1 LPA (48, 57, 58). Job 147 (LinkedIn Chennai, 5 to 17 LPA) was not flagged but has the same kind of range as job 214, so it is excluded from the city medians.
+- Salary measure: midpoint of the posted range. Rows with a minimum only (237, 208) or a maximum only (219) have no midpoint and are left out. Pool: 37 clean rows with a midpoint (39 clean, minus job 147, minus job 219).
+- Median midpoint (LPA) with n: Bengaluru 4.50 (11), Hyderabad 4.13 (7), Mumbai 6.00 (5), Delhi/NCR 3.90 (5), Chennai 2.58 (5). Pune (3) and Other (1) are too few to report.
+- Jobs 27 and 28 (10 to 16 LPA, Bengaluru) do not change the Bengaluru median (4.50 with and without them). Including all outliers moves Delhi/NCR to 4.50, Chennai to 2.82 and Pune to 2.58.
+- Cities cannot be ranked by salary: each city has 5 to 11 postings, ranges mix fresher and 2 to 8 year roles (Mumbai's three highest rows ask 1, 3 and 8 years), and portals differ (Naukri ranges vs Indeed monthly figures converted to annual). Posted ranges are not pay.
+- Counts from my sample; no significance claims.
