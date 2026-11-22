@@ -20,3 +20,11 @@
 - Within portal (sql/08_q1_band_within_portal.sql, Indeed and LinkedIn only): SQL fresher vs experienced 5 of 6 vs 8 of 11 (Indeed), 5 of 5 vs 11 of 13 (LinkedIn); Excel 5 of 6 vs 6 of 11 and 2 of 5 vs 5 of 13; Power BI 4 of 6 vs 5 of 11 and 4 of 5 vs 7 of 13; Python 1 of 6 vs 7 of 11 and 3 of 5 vs 6 of 13 (opposite directions). Cell sizes are 5 to 13, so one posting moves a percentage by 17 to 20 points.
 - Q1 answer: among the 11 fresher-band Data Analyst postings on Indeed and LinkedIn, 10 state SQL, 8 Power BI, 7 Excel and 4 Python. A skill difference between fresher and experienced postings cannot be separated from portal mix in this sample.
 - Limitation for the write-up: Foundit has no fresher-band Data Analyst postings; Naukri bands are mostly unknown.
+
+## Q2: entry-level share and title mix by city (sql/09_q2_entry_by_city.sql, run 2026-11-22)
+
+- Base: analysis set, six main cities (primary_city); 1 "Other" and 1 "Unknown" row left out. City rows: Bengaluru 55, Delhi/NCR 44, Pune 40, Chennai 36, Hyderabad 35, Mumbai 34. Quotas were fixed per city, so this says nothing about city size.
+- Entry-level title count by city, any rule / without Associate / strict (no Associate, no internship): Hyderabad 10 / 8 / 5, Mumbai 9 / 4 / 3, Pune 8 / 6 / 2, Bengaluru 10 / 6 / 3, Delhi/NCR 8 / 5 / 4, Chennai 6 / 4 / 3. Totals 51 / 33 / 20 match the cleaning log.
+- Hyderabad is highest under all three definitions (10 of 35, 8 of 35, 5 of 35), by 2 to 3 postings. Other cities reorder with the definition: Mumbai drops from 9 to 4 without Associate titles (5 of its 9 are Associate-titled). No reliable difference between cities.
+- Title mix by city follows the collection design (fixed title slots per city), not the market. Only Chennai shows a supply signal: 13 of 36 postings are Business Analyst because Data Analyst, MIS and Operations postings were thin there.
+- Counts are from my sample; no significance claims.
