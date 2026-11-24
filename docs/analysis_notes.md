@@ -72,3 +72,10 @@
 - Finding that holds: Business Analyst postings state fewer of the top 10 Data Analyst skills than Data Analyst postings on all four portals (gap 14 to 17 points). The MIS SQL gap holds on both portals with n of 10 or more (Naukri, Indeed).
 - Weakened: MIS vs BA ranking. MIS is above BA on Indeed (43.0 vs 32.5) and level on Naukri (17.3 vs 16.1); the pooled gap partly reflects portal mix (15 of 34 MIS rows are Naukri). Cells with n under 8 (Foundit and LinkedIn MIS, all Operations) are not interpreted.
 - Operations: 15 rows (Naukri 2, Indeed 3), mostly sales or revenue operations; shown with counts only.
+
+## Skill pairs (sql/18_skill_pairs.sql)
+
+- Base: 102 q1_base Data Analyst rows, stated mentions only, pairs with 10+ rows shown (20 listed).
+- SQL + Power BI 51 rows (50.0%), SQL + Python 42 (41.2%), SQL + Tableau 36 (35.3%), SQL + Excel 42 (41.2%). Share of postings asking for the second skill that also state SQL: Power BI 89.5% (51 of 57), Python 95.5% (42 of 44), Tableau 90.0% (36 of 40), Excel 85.7% (42 of 49). SQL postings that also state Python: 53.8%. 27 postings state both Power BI and Python.
+- Pairs with Dashboards/visualization (for example Power BI 96.5%, Tableau 97.5%) are not used: the concept may overlap with tool aliases in the vocabulary (check pending).
+- Limits: pooled across portals (Q1 found SQL stated on 53% of Naukri Data Analyst rows against 82 to 88% elsewhere), pairs under 10 rows not shown, counts only, no significance claims, salary by skill pair not answerable (Q3: 39 clean salaries).
