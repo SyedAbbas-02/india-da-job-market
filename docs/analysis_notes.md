@@ -61,3 +61,10 @@
 - Junior and level-I titles also ask for experience: job 270 (2 to 5 years), 151 (2 to 4), 174 (1 to 2), 286 (3 to 5), 261 (2 to 3), 250 (1 to 3). All 14 rows asking 1+ years were read in the Part C list.
 - Description vs portal: 13 any-rule rows have both values; 3 differ by 1+ year (jobs 261, 303, 52), always with the portal lower (portal 0, description 2). Strict rule: 1 of 7 (job 261). The portal Fresher label is the unreliable part; portal ranges usually match the description.
 - Counts from my sample; no significance claims.
+
+## Q5: Title vs Data Analyst skills (sql/15_q5_title_skill_overlap.sql)
+
+- Reference: 102 q1_base Data Analyst rows; top 10 skills = Dashboards/visualization, SQL, Power BI, Excel, Data cleaning/quality, Python, Tableau, Statistics, Pivot tables, Machine learning (no tie at rank 10). Skills counted where desc_level = 'stated'. "Other" titles (18 rows) excluded.
+- Average share of the top 10 stated per posting: Data Analyst 45.9% (n 102), MIS 31.8% (n 34; 37.6% without 9 thin rows), Business Analyst 27.2% (n 60; unchanged without thin or borderline rows), Operations 32.0% (n 15; 21.7% on the 6 clean rows, not reportable).
+- Ranking: MIS closest, BA furthest. Percentages are not precise: the top 10 comes from the Data Analyst rows, which biases the baseline upward. Counts are small and no significance is claimed.
+- Operations: 15 rows (Naukri 2, Indeed 3), mostly sales or revenue operations; shown with counts only.
