@@ -66,5 +66,7 @@
 
 - Reference: 102 q1_base Data Analyst rows; top 10 skills = Dashboards/visualization, SQL, Power BI, Excel, Data cleaning/quality, Python, Tableau, Statistics, Pivot tables, Machine learning (no tie at rank 10). Skills counted where desc_level = 'stated'. "Other" titles (18 rows) excluded.
 - Average share of the top 10 stated per posting: Data Analyst 45.9% (n 102), MIS 31.8% (n 34; 37.6% without 9 thin rows), Business Analyst 27.2% (n 60; unchanged without thin or borderline rows), Operations 32.0% (n 15; 21.7% on the 6 clean rows, not reportable).
-- Ranking: MIS closest, BA furthest. Percentages are not precise: the top 10 comes from the Data Analyst rows, which biases the baseline upward. Counts are small and no significance is claimed.
+- Skill detail (sql/16_q5_skill_by_title.sql), share of postings stating each skill, DA 102 / MIS 34 / BA 60 / Operations 15: Excel 48.0 / 76.5 / 56.7 / 86.7; Pivot tables 17.6 / 58.8 / 15.0 / 33.3; Dashboards 81.4 / 58.8 / 56.7 / 46.7; SQL 76.5 / 35.3 / 60.0 / 53.3; Power BI 55.9 / 32.4 / 23.3 / 26.7; Python 43.1 / 2.9 / 15.0 / 6.7; Statistics 38.2 / 0.0 / 3.3 / 6.7.
+- Reading: MIS overlaps with Data Analyst through Excel, Pivot tables and Dashboards, not through SQL, Python or Statistics. BA is lower on Power BI, Python, Statistics and Data cleaning but keeps SQL at 60%. Excel is high in every group.
+- Caveat: the top 10 comes from the Data Analyst rows, and the SQL gap for MIS may partly be a portal effect (15 of 34 MIS rows are Naukri, where Q1 found SQL stated far less often); portal split checked in sql/17.
 - Operations: 15 rows (Naukri 2, Indeed 3), mostly sales or revenue operations; shown with counts only.
