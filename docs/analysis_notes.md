@@ -1,5 +1,16 @@
 # Analysis notes (Phase 4)
 
+## Phase 4 summary
+
+Analysis set: 246 postings (Naukri 76, LinkedIn 65, Indeed 53, Foundit 52). Data Analyst-titled base for Q1: 102 rows. All figures are counts next to percentages; no significance is claimed; samples are small.
+
+- Q1 Skills: the top Data Analyst skills stated in descriptions are Dashboards/visualization (83 of 102), SQL (78), Power BI (57), Excel (49), Data cleaning/quality (47), Python (44), Tableau (40). The fresher (0 to 1 years, 19 rows) vs experienced (2+ years, 46 rows) differences do not survive a within-portal check, because the two bands come from different portals (fresher: Naukri 8, Indeed 6, LinkedIn 5, Foundit 0; experienced: Foundit 20, LinkedIn 13, Indeed 11, Naukri 2). 37 rows state no experience.
+- Q2 Cities: Hyderabad has the highest entry-level count under all three title rules (10, 8 and 5 of 35), but no reliable difference between cities. Title mix follows the collection design.
+- Q3 Salary: 55 of 246 postings show a salary (Indeed 23 of 53, Naukri 27 of 76, LinkedIn 5 of 65, Foundit 0 of 52); 39 are clean after outlier checks. City medians are reportable for five cities only and no salary ranking is made. No skill premium is claimed. Salary data is too thin to link to city or skill.
+- Q4 Experience gap: of entry-level titled rows (any rule 51, without Associate 33, strict 20), 28 / 15 / 11 state a minimum experience and 14 / 6 / 6 of those ask 1+ years; 23 / 18 / 9 state no number. The counts are a floor, not a rate. The portal "Fresher" label is the misleading part (for example jobs 261 and 303: portal 0 years, description 2+).
+- Q5 Titles: share of the top 10 Data Analyst skills stated: Data Analyst 45.9% (102), MIS 31.8% (34), Business Analyst 27.2% (60), Operations 32.0% (15, not reportable). Business Analyst is below Data Analyst on all four portals (gap 14 to 17 points). MIS overlaps through Excel, Pivot tables and Dashboards, not SQL, Python or Statistics; its SQL gap holds on Naukri and Indeed. MIS vs Business Analyst ranking is weak (MIS ahead on Indeed, level on Naukri).
+- Skill pairs: SQL is the base layer. Share of postings asking for a second skill that also state SQL: Python 95.5% (42 of 44), Tableau 90.0% (36 of 40), Power BI 89.5% (51 of 57), Excel 85.7% (42 of 49). SQL + Power BI (51 rows) is more common than SQL + Python (42), and the two overlap (27 rows state both).
+
 ## Q4 (part 1): the portal "Fresher" label (sql/04_fresher_label.sql, run 2026-11-15)
 
 - The label "Fresher" exists only on Foundit (17 of 59 rows) and Indeed (8 of 62). Naukri shows numeric ranges ("0 - 2 years") and LinkedIn has no experience field, so the label cannot be checked there.
