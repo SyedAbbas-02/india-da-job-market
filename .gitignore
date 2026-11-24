@@ -6,3 +6,6 @@ __pycache__/
 data_raw/
 data_clean/stage*.csv
 notebooks/scratch*.ipynb
+
+data_clean/dashboard_*.csv
+dashboard/*.pbix
